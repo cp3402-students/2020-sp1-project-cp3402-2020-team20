@@ -979,3 +979,7 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+#categories-2 {
+    background-color: black;
+}
