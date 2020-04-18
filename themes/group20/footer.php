@@ -3,7 +3,7 @@
  * The template for displaying the footer
  *
  * Contains the closing of the #content div and all content after.
- *
+ * HELLO THIS IS TED SPEAKING 
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package Group20
