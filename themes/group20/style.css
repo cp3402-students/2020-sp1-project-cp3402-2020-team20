@@ -868,7 +868,7 @@ a:active {
 .bypostauthor {
 	display: block;
 }
-
+/* I can't find the "recent comments" section */
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
@@ -982,4 +982,15 @@ object {
 
 #categories-2 {
     background-color: black;
+}
+#archives-2{
+	background-color: red;
+}
+
+#recent-comments-2{
+	background-color: blue;	
+}
+
+#recent-posts-2 {
+    background-color: lightgoldenrodyellow;
 }
