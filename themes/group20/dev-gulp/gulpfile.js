@@ -66,7 +66,7 @@ function javascript() {
 function watch() {
   browserSync.init({
     open: 'external',
-    proxy: 'http://one.wordpress.test',
+    proxy: 'http://127.0.0.1/wordpress/',
     port: 8080,
     reloadDelay: 1000
   });
