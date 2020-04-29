@@ -4,5 +4,6 @@ ai1wm-backups/
 upgrade/
 uploads/
 debug.log
-index.php
+themes/group20/dev-gulp/node_modules/
+themes/group20/dev-gulp/node_modules/package-lock.json
 README.md
