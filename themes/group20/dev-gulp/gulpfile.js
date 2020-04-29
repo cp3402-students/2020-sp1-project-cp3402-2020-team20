@@ -1,3 +1,8 @@
+
+
+// insert the location of your local server in the variable below
+var server_location = 'http://one.wordpress.test';
+
 var themename = 'group20';
 var gulp = require( 'gulp' ),
     autoprefixer = require( 'gulp-autoprefixer' ),
@@ -66,7 +71,7 @@ function javascript() {
 function watch() {
   browserSync.init({
     open: 'external',
-    proxy: 'http://127.0.0.1/wordpress/',
+    proxy: server_location,
     port: 8080,
     reloadDelay: 1000
   });
