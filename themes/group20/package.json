@@ -39,5 +39,8 @@
     "compile:rtl": "rtlcss style.css style-rtl.css",
     "lint:scss": "wp-scripts lint-style 'sass/**/*.scss'",
     "lint:js": "wp-scripts lint-js 'js/*.js'"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2"
   }
 }
