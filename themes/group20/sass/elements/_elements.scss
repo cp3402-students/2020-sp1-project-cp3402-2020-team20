@@ -35,18 +35,22 @@ figure {
 
 @import "tables";
 
-#recent-posts-2 {
-	background-color: red;
-}
-
 #recent-comments-2 {
-	background-color: blue;
+	@include extra-small-screen {
+		background: green;
+	};
+	@include small-screen {
+		background: yellow;
+	};
+	@include medium-screen {
+		background: orange;
+	};
+	@include large-screen {
+		background: red;
+	};
+	@include largest-screen {
+		background: maroon
+	};
+
 }
 
-#categories-2 {
-	background-color: green;
-}
-  
-#archives-2 {
-	background-color: violet;
-}
