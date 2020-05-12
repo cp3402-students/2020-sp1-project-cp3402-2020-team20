@@ -26,6 +26,7 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'group20' ); ?></a>
 
 	<header id="masthead" class="site-header">
+	<a class="toggle-nav" href="#">&#9776;</a>
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
@@ -45,8 +46,8 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
+		
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'group20' ); ?></button>
 			<?php
 			wp_nav_menu(
 				array(

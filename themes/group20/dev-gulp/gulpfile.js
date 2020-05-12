@@ -29,7 +29,8 @@ var PHPWatchFiles  = root + '**/*.php',
 var jsSRC = [
     js + 'customizer.js',
     js + 'navigation.js',
-    js + 'skip-link-focus-fix.js'
+    js + 'skip-link-focus-fix.js',
+    js + 'hamburger-menu.js'
 ];
 
 // Used to concat the files in a specific order.

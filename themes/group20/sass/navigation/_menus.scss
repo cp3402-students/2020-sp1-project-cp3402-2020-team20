@@ -1,20 +1,3 @@
-
-	// @include extra-small-screen {
-	// 	background: green;
-	// };
-	// @include small-screen {
-	// 	background: black;
-	// };
-	// @include medium-screen {
-	// 	background: orange;
-	// };
-	// @include large-screen {
-	// 	background: red;
-	// };
-	// @include largest-screen {
-	// 	background: maroon
-	// };
-
 $line-spacing: 50px;
 
 .menu-main-menu-container {
@@ -25,15 +8,12 @@ $line-spacing: 50px;
 	width: inherit;
 }
 .main-navigation {
-	display: flex;
 	justify-content: center;
 	font-size: 1.5em;	
 
-	
-
 	// Main menu bar
 	ul {
-		display: block;
+		display: flex;
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -48,11 +28,6 @@ $line-spacing: 50px;
 			z-index: 99999;
 			display: inline-block;
 
-			// ul {
-			// 	left: -999em;
-			// 	top: 0;
-			// }
-
 			li {
 				&:hover > ul,
 				&.focus > ul {
@@ -62,18 +37,6 @@ $line-spacing: 50px;
 				}	
 				background-color: blue;		
 				width: 250%;		
-			}
-
-			a {
-				// font-size: 0.5em;
-			}
-
-			:hover > a,
-			.focus > a {
-			}
-
-			a:hover,
-			a.focus {
 			}
 		}
 
@@ -118,44 +81,68 @@ $line-spacing: 50px;
 	}
 }
 
-/* Small menu. */
-// .menu-toggle,
-// .main-navigation.toggled ul {
-// 	display: block;
-// }
+// screen sizes to cater for
+// $extra-small: 576px;
+// $small: 768px;
+// $medium: 992px;
+// $large: 1200px;
 
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-
-	// .site-main & {
-	// 	margin: 0 0 1.5em;
-	// }
-
-	// .nav-links {
-	// 	display: flex;
-	// }
-
-	// .nav-previous {
-	// 	flex: 1 0 50%;
-	// }
-
-	// .nav-next {
-	// 	text-align: end;
-	// 	flex: 1 0 50%;
-	// }
-}
-
-
-
-
-@media screen and (min-width: 37.5em) {
-
-	.menu-toggle {
+@include extra-small-screen {
+	.main-navigation {
 		display: none;
+		.sub-menu {
+			display: none;
+		}
 	}
+	.mobileMenu {
+		display: flex;
 
-	.main-navigation ul {
+		ul {
+			flex-direction: column;
+		}		
+	}
+};
+
+@include small-screen {
+	.main-navigation {
+		display: none;
+		.sub-menu {
+			display: none;
+		}
+	}	
+	.mobileMenu {
+		display: flex;
+		
+		ul {
+			flex-direction: column;
+		}
+	}	
+};
+
+@include medium-screen {
+	.main-navigation {
 		display: flex;
 	}
-}
+	.toggle-nav {
+		display: none;
+	}
+};
+
+@include large-screen {
+	.main-navigation {
+		display: flex;
+	}
+	.toggle-nav {
+		display: none;
+	}
+};
+
+@include largest-screen {
+	.main-navigation {
+		display: flex;
+	}
+	.toggle-nav {
+		display: none;
+	}
+};
+

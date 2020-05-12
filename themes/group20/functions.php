@@ -150,6 +150,8 @@ function group20_scripts() {
 
 	wp_enqueue_script( 'group20-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
 
+	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburger-menu.js', array(), _S_VERSION, true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -183,3 +185,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+// custom stuff royce trying to do
+function burger_menu_script() {
+     
+    wp_enqueue_script( 'burger-menu-script', get_stylesheet_directory_uri() . '/js/hamburger-menu.js', array( 'jquery' ) );
+  
+}
+add_action( 'wp_enqueue_scripts', 'burger_menu_script' );
