@@ -3,7 +3,6 @@
 // insert the location of your local server in the variable below
 var server_location = 'http://one.wordpress.test';
 
-var themename = 'group20';
 var gulp = require( 'gulp' ),
     autoprefixer = require( 'gulp-autoprefixer' ),
     browserSync  = require( 'browser-sync' ).create(),
@@ -17,7 +16,7 @@ var gulp = require( 'gulp' ),
     lineec  = require( 'gulp-line-ending-corrector' )
     cache = require('gulp-cache');
 
-var root  = '../',
+    var root  = '../',
     scss  = root + 'sass/',
     js  = root + 'src/js/',
     jsdist  = root + 'dist/js/';
@@ -30,7 +29,8 @@ var PHPWatchFiles  = root + '**/*.php',
 var jsSRC = [
     js + 'customizer.js',
     js + 'navigation.js',
-    js + 'skip-link-focus-fix.js'
+    js + 'skip-link-focus-fix.js',
+    js + 'hamburger-menu.js'
 ];
 
 // Used to concat the files in a specific order.

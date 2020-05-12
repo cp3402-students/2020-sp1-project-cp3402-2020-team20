@@ -35,22 +35,3 @@ figure {
 
 @import "tables";
 
-#recent-comments-2 {
-	@include extra-small-screen {
-		background: green;
-	};
-	@include small-screen {
-		background: yellow;
-	};
-	@include medium-screen {
-		background: orange;
-	};
-	@include large-screen {
-		background: red;
-	};
-	@include largest-screen {
-		background: maroon
-	};
-
-}
-
