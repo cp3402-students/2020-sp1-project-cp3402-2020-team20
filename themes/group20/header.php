@@ -23,10 +23,11 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'group20' ); ?></a>
+		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'group20' ); ?></a>
 
-	<header id="masthead" class="site-header">
-	<a class="toggle-nav" href="#">&#9776;</a>
+	<div class="top-header">
+		<header id="masthead" class="site-header">
+		
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
@@ -46,7 +47,19 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		
+		<!-- Put image slider in here -->
+		<div class="image-slider">
+			test image slider
+		</div><!-- #image-slider -->
+
+		<div id="nav-icon1">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div> <!-- #top-header -->
+
+	<div class="main-nav-part">		
 		<nav id="site-navigation" class="main-navigation">
 			<?php
 			wp_nav_menu(
@@ -57,4 +70,5 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
+	</div><!-- #main-nav-part -->
 	</header><!-- #masthead -->

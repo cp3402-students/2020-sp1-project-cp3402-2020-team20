@@ -90,6 +90,7 @@ $line-spacing: 50px;
 @include extra-small-screen {
 	.main-navigation {
 		display: none;
+		height: 0;
 		.sub-menu {
 			display: none;
 		}
@@ -99,13 +100,22 @@ $line-spacing: 50px;
 
 		ul {
 			flex-direction: column;
+			z-index: 99999;
 		}		
+	}
+	.site-header {
+		height: 50px;
+		justify-content: space-between;
+	}
+	.top-header {
+		height: $nav-button-height + (2 * $nav-button-margin);
 	}
 };
 
 @include small-screen {
 	.main-navigation {
 		display: none;
+		height: 0;
 		.sub-menu {
 			display: none;
 		}
@@ -115,8 +125,16 @@ $line-spacing: 50px;
 		
 		ul {
 			flex-direction: column;
+			z-index: 99999;
 		}
 	}	
+	.site-header {
+		height: 50px;
+		justify-content: space-between;
+	}
+	.top-header {
+		height: $nav-button-height + (2 * $nav-button-margin);
+	}
 };
 
 @include medium-screen {
