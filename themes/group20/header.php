@@ -51,18 +51,10 @@
 <div class="slideshow-container">
 
 <!-- OBVIOUSLY COME BACK AND CHANGE THIS -->
-	<div class="mySlides fade">
-	<img src="<?php echo get_theme_file_uri('inc\wp001b8c5d_05_06.jpg'); ?>" />
-	<div class="text">PICTURE ONE</div>
-	</div>
+	<?php echo_theme_slider_images() ?>
 
-	<div class="mySlides fade">
-	<img src="<?php echo get_theme_file_uri('inc\wp1b62ae80_05_06.jpg'); ?>" />
-	<div class="text">PICTURE TWO</div>
-	</div>
 	
 </div>
-
 		<div id="nav-icon1">
 			<span></span>
 			<span></span>
@@ -83,8 +75,6 @@
 		</nav><!-- #site-navigation -->
 	</div><!-- #main-nav-part -->
 
-
-	<?php echo_theme_slider_images() ?>
 	<?php echo_theme_sound() ?>
 
 	</header><!-- #masthead -->
