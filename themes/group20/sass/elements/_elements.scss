@@ -66,7 +66,14 @@ figure {
 	}
 };
 
+
+
+
 // TO FIX IN A WHILE
+
+
+
+
 .site-header {
 	display: flex;
 	flex-direction: row;
@@ -75,11 +82,8 @@ figure {
 .site-branding {
 	width: 25%;
 }
-
-
-// for new nav button
   
-  /* Icon 1 */
+  // nav button
   
   #nav-icon1 {
 	width: 60px;
@@ -149,4 +153,67 @@ figure {
 	-o-transform: rotate(-135deg);
 	transform: rotate(-135deg);
   }
+
+  // for image slider
+
+  * {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 50%;
+  max-width: 500px;
+  max-height: 150px;
+  position: relative;
+  margin: auto;
+  margin-left: 0;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
   

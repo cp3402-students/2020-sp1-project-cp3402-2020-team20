@@ -188,4 +188,87 @@ function group20_custom_scripts() {
      
 	wp_enqueue_script( 'hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array( 'jquery' ) );
 }
+
+// backend playing with stuff
+
+function add_images_to_slider($wp_customize) {
+	$wp_customize->add_section('slider_images', array(
+		'title' => 'Image Slider',
+		'description' => 'Add some images to the image slider.',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_setting('images', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'images', array(
+		'section' => 'slider_images',
+		'label' => 'images',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+
+}
+add_action('customize_register', 'add_images_to_slider');
+
+// this is the function to actually put the media player on the page
+function echo_theme_slider_images() {
+	$id = get_theme_mod('images');
+	if ($id != 0) {
+		// Display the tag
+	}
+	$attr = array(
+		'src' => wp_get_attachment_url($id)
+	);
+	
+	// echo '<div style="margin-top: 30px;">' . $attr . '</div>';
+}
+
+
+// // new section from https://www.sitepoint.com/using-the-wordpress-customizer-media-controls/ tutorial
+
+function add_my_media_controls($wp_customize) {
+	$wp_customize->add_section('sound', array(
+		'title' => 'Music',
+		'description' => 'Add some music to play in the background of your website.',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_setting('music', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'music', array(
+		'section' => 'sound',
+		'label' => 'Music',
+		'mime_type' => 'audio',
+		'description' => 'This will add music to the music player.'
+	)));
+
+}
+
+// this is the function to actually put the media player on the page
+function echo_theme_sound() {
+	$id = get_theme_mod('music');
+	if ($id != 0) {
+		// Display the tag
+	}
+	$attr = array(
+		'src' => wp_get_attachment_url($id)
+	);
+	
+	echo '<div style="margin-top: 30px;">' . wp_audio_shortcode($attr) . '</div>';
+}
+
+
+add_action('customize_register', 'add_my_media_controls');
+
+
+
+
 add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );
