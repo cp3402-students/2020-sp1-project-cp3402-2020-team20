@@ -19,6 +19,28 @@ object {
 	display: inline-block;
 }
 
+@include extra-small-screen {	
+	.custom-logo-link {
+		display: block;
+		
+		
+	}
+	.custom-logo {
+		height: $nav-button-height + (2 * $nav-button-margin);
+		width: $nav-button-height + (2 * $nav-button-margin);
+	}
+};
+
+@include small-screen {
+	.custom-logo-link {
+		display: block;
+	}
+	.custom-logo {
+		height: $nav-button-height + (2 * $nav-button-margin);
+		width: $nav-button-height + (2 * $nav-button-margin);
+	}
+};
+
 /*--------------------------------------------------------------
 ## Captions
 --------------------------------------------------------------*/

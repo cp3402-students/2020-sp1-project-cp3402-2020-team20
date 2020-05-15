@@ -145,12 +145,8 @@ add_action( 'widgets_init', 'group20_widgets_init' );
 function group20_scripts() {
 	wp_enqueue_style( 'group20-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'group20-style', 'rtl', 'replace' );
-
 	wp_enqueue_script( 'group20-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
 	wp_enqueue_script( 'group20-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
-
-	wp_enqueue_script( 'hamburger-menu', get_template_directory_uri() . '/js/hamburger-menu.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -186,10 +182,147 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 
-// custom stuff royce trying to do
-function burger_menu_script() {
-     
-    wp_enqueue_script( 'burger-menu-script', get_stylesheet_directory_uri() . '/js/hamburger-menu.js', array( 'jquery' ) );
-  
+//
+// 
+// Custom Functions
+// 
+//
+
+function group20_custom_scripts() {     
+	wp_enqueue_script( 'hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array( 'jquery' ) );
 }
-add_action( 'wp_enqueue_scripts', 'burger_menu_script' );
+
+// Custom image slider 
+function add_images_to_slider($wp_customize) {
+	$wp_customize->add_section('slider_images', array(
+		'title' => 'Image Slider',
+		'description' => 'Add some images to the image slider.',
+		'capability' => 'edit_theme_options'
+	));
+
+	// Image 1
+	$wp_customize->add_setting('images', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'images', array(
+		'section' => 'slider_images',
+		'label' => 'Images',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+
+	// Image 2
+	$wp_customize->add_setting('images2', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'images2', array(
+		'section' => 'slider_images',
+		'label' => 'Images2',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+
+	// Image 3
+	$wp_customize->add_setting('images3', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'images3', array(
+		'section' => 'slider_images',
+		'label' => 'Images3',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+}
+
+add_action('customize_register', 'add_images_to_slider');
+
+// test looper
+
+function echo_theme_slider_images() {
+	$images = ['images', 'images2', 'images3'];
+
+	for ($i = 0; $i < 3; $i++) {
+		$id = get_theme_mod($images[$i]);
+		if ($id != 0) {
+			// Display nothing
+		}
+		$attr = array(
+			'src' => wp_get_attachment_url($id)
+		);
+		
+		echo image_shortcode($attr);
+		};
+}
+
+// Add Image Shortcode
+function image_shortcode($atts) {
+    $atts = shortcode_atts(
+        [
+        'src' => '',
+        ], $atts, 'img'
+    );
+
+    $return = '<div class="mySlides fade"><img src="' . $atts['src'] . '"/></div>';
+    
+    return $return;
+}
+
+add_shortcode('img', 'image_shortcode');
+
+
+
+
+
+// // new section from https://www.sitepoint.com/using-the-wordpress-customizer-media-controls/ tutorial
+
+function add_my_media_controls($wp_customize) {
+	$wp_customize->add_section('sound', array(
+		'title' => 'Music',
+		'description' => 'Add some music to play in the background of your website.',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_setting('music', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'music', array(
+		'section' => 'sound',
+		'label' => 'Music',
+		'mime_type' => 'audio',
+		'description' => 'This will add music to the music player.'
+	)));
+
+}
+
+// this is the function to actually put the media player on the page
+function echo_theme_sound() {
+	$id = get_theme_mod('music');
+	if ($id != 0) {
+		// Display the tag
+	}
+	$attr = array(
+		'src' => wp_get_attachment_url($id)
+	);
+	
+	echo '<div style="margin-top: 30px;">' . wp_audio_shortcode($attr) . '</div>';
+}
+
+
+add_action('customize_register', 'add_my_media_controls');
+
+
+
+
+add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );

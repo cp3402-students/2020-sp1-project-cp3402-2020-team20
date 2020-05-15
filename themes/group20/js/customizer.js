@@ -7,6 +7,7 @@
  * Contains handlers to make Theme Customizer preview reload changes asynchronously.
  */
 
+
 ( function( $ ) {
 	// Site title and description.
 	wp.customize( 'blogname', function( value ) {
