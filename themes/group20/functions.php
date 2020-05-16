@@ -246,7 +246,7 @@ function add_images_to_slider($wp_customize) {
 	)));
 }
 
-add_action('customize_register', 'add_images_to_slider');
+
 
 // test looper
 
@@ -278,12 +278,7 @@ function image_shortcode($atts) {
     
     return $return;
 }
-
 add_shortcode('img', 'image_shortcode');
-
-
-
-
 
 // // new section from https://www.sitepoint.com/using-the-wordpress-customizer-media-controls/ tutorial
 
@@ -319,13 +314,43 @@ function echo_theme_sound() {
 		'src' => wp_get_attachment_url($id)
 	);
 	
-	echo '<div style="margin-top: 30px;">' . wp_audio_shortcode($attr) . '</div>';
+	echo '<div>' . wp_audio_shortcode($attr) . '</div>';
+}
+
+// to allow the user to turn the 'by-line' of posts on or off
+
+function add_post_meta_checkbox($wp_customize) {
+	$wp_customize->add_section('byline', array(
+		'title' => 'Post Meta Information',
+		'description' => 'Choose whether or not to display meta information about posts.',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_setting('meta_info', array(
+		'default' => true,
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'meta_info', array(
+		'section' => 'byline',
+		'label' => 'Post meta info',
+		'description' => 'This allows the user to choose if they want the meta information displayed with a post.',
+		'type' => 'checkbox'
+	)));
+
+}
+
+function echo_post_meta() {
+	$display_meta = get_theme_mod('meta_info', true);
+
+	if ($display_meta == true) {
+		group20_posted_on();
+		group20_posted_by();
+	}
 }
 
 
+add_action('customize_register', 'add_post_meta_checkbox');
 add_action('customize_register', 'add_my_media_controls');
-
-
-
-
 add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );
+add_action('customize_register', 'add_images_to_slider');
