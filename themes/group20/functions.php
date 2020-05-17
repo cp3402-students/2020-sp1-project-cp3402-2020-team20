@@ -195,7 +195,7 @@ function group20_custom_scripts() {
 	wp_enqueue_script( 'hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array( 'jquery' ) );
 }
 
-// Custom image slider 
+// image slider customizer code
 function add_images_to_slider($wp_customize) {
 	$wp_customize->add_section('slider_images', array(
 		'title' => 'Image Slider',
@@ -246,27 +246,27 @@ function add_images_to_slider($wp_customize) {
 	)));
 }
 
-
-
-// test looper
+// image slider
 
 function echo_theme_slider_images() {
 	$images = ['images', 'images2', 'images3'];
 
 	for ($i = 0; $i < 3; $i++) {
-		$id = get_theme_mod($images[$i]);
-		if ($id != 0) {
-			// Display nothing
-		}
-		$attr = array(
-			'src' => wp_get_attachment_url($id)
-		);
-		
-		echo image_shortcode($attr);
-		};
+
+		if (get_theme_mod($images[$i]) != 0) {
+			$id = get_theme_mod($images[$i]);
+			if ($id != 0) {
+				// Display nothing
+			}
+			$attr = array(
+				'src' => wp_get_attachment_url($id)
+			);
+			echo image_shortcode($attr);
+		} 	
+	};
 }
 
-// Add Image Shortcode
+// image shortcode
 function image_shortcode($atts) {
     $atts = shortcode_atts(
         [
@@ -280,7 +280,7 @@ function image_shortcode($atts) {
 }
 add_shortcode('img', 'image_shortcode');
 
-// // new section from https://www.sitepoint.com/using-the-wordpress-customizer-media-controls/ tutorial
+// add music player customizer option
 
 function add_my_media_controls($wp_customize) {
 	$wp_customize->add_section('sound', array(
@@ -317,7 +317,7 @@ function echo_theme_sound() {
 	echo '<div>' . wp_audio_shortcode($attr) . '</div>';
 }
 
-// to allow the user to turn the 'by-line' of posts on or off
+// customizer option - turn on/off display of bylines of posts
 
 function add_post_meta_checkbox($wp_customize) {
 	$wp_customize->add_section('byline', array(

@@ -1,3 +1,5 @@
+
+// Mobile menu 
 jQuery(document).ready(function() {
 
     jQuery('#nav-icon1').click(function(){
@@ -6,6 +8,7 @@ jQuery(document).ready(function() {
 	});
 });
 
+// Image slider
 jQuery(document).ready(function() {
   var slideIndex = 0;
   showSlides();
@@ -27,17 +30,25 @@ jQuery(document).ready(function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function(event) { 
+
+
+
 // sticky nav bar
+document.addEventListener("DOMContentLoaded", function(event) { 
 
 // When the user scrolls the page, execute myFunction
 window.onscroll = function() {
   sticky_function()
 };
 
+// check if we are in mobile mode
+var mobile_check = document.getElementById("site-navigation");
+if (mobile_check.className == "")
+
 // Get the navbar
 var navbar = document.getElementById("site-navigation");
-var thingToAdd = document.getElementById("primary");
+var primary_area = document.getElementById("primary");
+var mobile_nav_icon = document.getElementById("nav-icon1");
 
 // Get the offset position of the navbar
 var sticky = navbar.offsetTop;
@@ -46,10 +57,11 @@ var sticky = navbar.offsetTop;
 function sticky_function() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky");
-    thingToAdd.classList.add("sticky-padding-fix");
+    primary_area.classList.add("sticky-padding-fix");
+    mobile_nav_icon.classList.add("sticky-nav-icon");
   } else {
     navbar.classList.remove("sticky");
-    thingToAdd.classList.remove("sticky-padding-fix");
+    thingprimary_areaToAdd.classList.remove("sticky-padding-fix");
   }
 }
 });

@@ -23,8 +23,6 @@
 			<div class="entry-meta">
 				<?php
 				echo_post_meta();
-				// group20_posted_on();
-				// group20_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
