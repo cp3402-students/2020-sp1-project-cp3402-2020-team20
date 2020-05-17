@@ -40,11 +40,17 @@ figure {
 	.image-slider {
 		display: none;
 	}
+	#nav-icon1 {
+		position: fixed;
+	}
 };
 
 @include small-screen {	
 	.image-slider {
 		display: none;
+	}
+	#nav-icon1 {
+		position: fixed;
 	}
 };
 
@@ -52,26 +58,63 @@ figure {
 	#nav-icon1 {
 		display: none;
 	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	  }
+	
+	  .sticky-padding-fix {
+		  padding-top: 50px;
+	  }
+	
+	  .sticky-nav-icon {
+		  position: fixed;
+	  }
 };
 
 @include large-screen {
 	#nav-icon1 {
 		display: none;
 	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	  }
+	
+	  .sticky-padding-fix {
+		  padding-top: 50px;
+	  }
+	
+	  .sticky-nav-icon {
+		  position: fixed;
+	  }
 };
 
 @include largest-screen {
 	#nav-icon1 {
 		display: none;
 	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	  }
+	
+	  .sticky-padding-fix {
+		  padding-top: 50px;
+	  }
+	
+	  .sticky-nav-icon {
+		  position: fixed;
+	  }
 };
 
 
 
 
 // TO FIX IN A WHILE
-
-
 
 
 .site-header {
@@ -83,6 +126,7 @@ figure {
 	width: 25%;
 }
   
+
   // nav button
   
   #nav-icon1 {
@@ -102,7 +146,7 @@ figure {
 	z-index: 9999;
   }
   
-  #nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
+  #nav-icon1 span {
 	display: block;
 	position: absolute;
 	height: 9px;
@@ -217,15 +261,4 @@ figure {
   to {opacity: 1}
 }
   
-
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-	position: fixed;
-	top: 0;
-	width: 100%;
-  }
-
-  .sticky-padding-fix {
-	  padding-top: 50px;
-  }
   
