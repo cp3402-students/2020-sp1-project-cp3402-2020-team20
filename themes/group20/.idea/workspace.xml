@@ -21,10 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8753027b-4951-4c3c-b03e-3b5b7106a5bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/maps/style.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/sass/maps/style.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/sass/style.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/variables-site/_typography.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/variables-site/_typography.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
       <workItem from="1589771670813" duration="13000" />
       <workItem from="1589771716013" duration="741000" />
       <workItem from="1589772755481" duration="573000" />
-      <workItem from="1589773970714" duration="3169000" />
+      <workItem from="1589773970714" duration="4014000" />
     </task>
     <servers />
   </component>
