@@ -397,7 +397,7 @@ function add_images_to_footer($wp_customize) {
 // test looper
 function echo_theme_footer_images() {
 	$footer_images = ['footer_images', 'footer_images2', 'footer_images3'];
-=======
+
 }
 
 function echo_post_meta() {
