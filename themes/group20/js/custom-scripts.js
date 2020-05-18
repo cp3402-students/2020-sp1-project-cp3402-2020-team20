@@ -41,14 +41,49 @@ window.onscroll = function() {
   sticky_function()
 };
 
-// check if we are in mobile mode
-var mobile_check = document.getElementById("site-navigation");
-if (mobile_check.className == "")
+window.onresize = function() {
+  // check to see if we have resized to a mobile-menu displaying window size
+  mobile_menu_setup()
+};
+
+mobile_menu_setup();
+
+function mobile_menu_setup() {
+  // check if we are in mobile mode when page first loads
+  var mobile_min_size = 768;
+  var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  if (mobile_check < mobile_min_size) {
+
+    // Get the navbar
+    var navbar = document.getElementById("site-navigation");
+    var primary_area = document.getElementById("primary");
+    var mobile_nav_icon = document.getElementById("nav-icon1");
+    var music_player = document.getElementById('music_player');
+
+    // Get the offset position of the navbar
+    // var sticky = navbar.offsetTop;
+    
+    // if (window.pageYOffset >= sticky) {
+    //   music_player.classList.add("sticky");
+    //   music_player.classList.add("music-sticky-padding-fix");
+    //   primary_area.classList.add("sticky-padding-fix");
+    //   mobile_nav_icon.classList.add("sticky");
+    // } else {
+    //   music_player.classList.remove("sticky");
+    //   music_player.classList.remove("music-sticky-padding-fix");
+    //   primary_area.classList.remove("sticky-padding-fix");
+    //   mobile_nav_icon.classList.remove("sticky");      
+    // }
+  }
+}
+
+
 
 // Get the navbar
 var navbar = document.getElementById("site-navigation");
 var primary_area = document.getElementById("primary");
 var mobile_nav_icon = document.getElementById("nav-icon1");
+var music_player = document.getElementById('music_player');
 
 // Get the offset position of the navbar
 var sticky = navbar.offsetTop;
@@ -57,11 +92,17 @@ var sticky = navbar.offsetTop;
 function sticky_function() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky");
+    music_player.classList.add("sticky");
+    music_player.classList.add("music-sticky-padding-fix");
     primary_area.classList.add("sticky-padding-fix");
     mobile_nav_icon.classList.add("sticky-nav-icon");
   } else {
     navbar.classList.remove("sticky");
-    thingprimary_areaToAdd.classList.remove("sticky-padding-fix");
+    music_player.classList.remove("sticky");
+    music_player.classList.remove("music-sticky-padding-fix");
+    primary_area.classList.remove("sticky-padding-fix");
+    mobile_nav_icon.classList.remove("sticky-nav-icon");
+    
   }
 }
 });

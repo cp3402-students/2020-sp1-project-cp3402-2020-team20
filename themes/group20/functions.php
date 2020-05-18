@@ -143,6 +143,9 @@ add_action( 'widgets_init', 'group20_widgets_init' );
  * Enqueue scripts and styles.
  */
 function group20_scripts() {
+
+    wp_enqueue_style( 'group20-fonts', 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poiret+One&display=swap
+');
 	wp_enqueue_style( 'group20-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'group20-style', 'rtl', 'replace' );
 	wp_enqueue_script( 'group20-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -311,7 +314,7 @@ function echo_theme_sound() {
 		'src' => wp_get_attachment_url($id)
 	);
 	
-	echo '<div>' . wp_audio_shortcode($attr) . '</div>';
+	echo '<div id="music_player" class="music-player"' . wp_audio_shortcode($attr) . '</div>';
 }
 
 // customizer option - turn on/off display of bylines of posts
