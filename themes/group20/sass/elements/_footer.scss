@@ -1,0 +1,48 @@
+
+.site-footer {
+    margin: 0 0 1.5em;
+    width: 100%;
+    background-color: $color__Secondary;
+    color: $color__Secondary_Font;
+}
+
+@include extra-small-screen {	
+
+};
+
+@include small-screen {	
+
+};
+
+@include medium-screen {
+    .footer_images_row{
+        display: flex;
+    }
+    
+    .footer_images_column{
+        flex: 33.33%;
+        padding: 5px;
+    }
+};
+
+@include large-screen {
+    .footer_images_row{
+        display: flex;
+    }
+    
+    .footer_images_column{
+        flex: 33.33%;
+        padding: 5px;
+    }
+};
+
+@include largest-screen {
+    .footer_images_row{
+        display: flex;
+    }
+    
+    .footer_images_column{
+        flex: 33.33%;
+        padding: 5px;
+    }
+};
