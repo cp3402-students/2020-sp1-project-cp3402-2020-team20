@@ -144,8 +144,7 @@ add_action( 'widgets_init', 'group20_widgets_init' );
  */
 function group20_scripts() {
 
-    wp_enqueue_style( 'group20-fonts', 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poiret+One&display=swap
-');
+    wp_enqueue_style( 'group20-fonts', "https://fonts.googleapis.com/css2?family=Poiret+One&display=swap");
 	wp_enqueue_style( 'group20-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'group20-style', 'rtl', 'replace' );
 	wp_enqueue_script( 'group20-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
