@@ -246,8 +246,6 @@ function add_images_to_slider($wp_customize) {
 	)));
 }
 
-// image slider
-
 function echo_theme_slider_images() {
 	$images = ['images', 'images2', 'images3'];
 
@@ -338,6 +336,69 @@ function add_post_meta_checkbox($wp_customize) {
 		'type' => 'checkbox'
 	)));
 
+function register_my_menu() {
+  register_nav_menu('footer-menu',__( 'Footer menu' ));
+}
+add_action( 'init', 'register_my_menu' );
+
+
+// Custom image slider Footer
+function add_images_to_footer($wp_customize) {
+	$wp_customize->add_section('slider_images_footer', array(
+		'title' => 'Image Footer',
+		'description' => 'Add some images to the image slider.',
+		'capability' => 'edit_theme_options'
+	));
+
+	// Image 1
+	$wp_customize->add_setting('footer_images', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images', array(
+		'section' => 'slider_images_footer',
+		'label' => 'Images',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+
+	// Image 2
+	$wp_customize->add_setting('footer_images2', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images2', array(
+		'section' => 'slider_images_footer',
+		'label' => 'Images2',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+
+	// Image 3
+	$wp_customize->add_setting('footer_images3', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images3', array(
+		'section' => 'slider_images_footer',
+		'label' => 'Images3',
+		'mime_type' => 'image',
+		'description' => 'This will add images to the image slider.'
+	)));
+}
+
+
+
+// test looper
+function echo_theme_footer_images() {
+	$footer_images = ['footer_images', 'footer_images2', 'footer_images3'];
+=======
 }
 
 function echo_post_meta() {
@@ -349,8 +410,36 @@ function echo_post_meta() {
 	}
 }
 
+	for ($x = 0; $x < 3; $x++) {
+		$id = get_theme_mod($footer_images[$x]);
+		if ($id != 0) {
+			// Display nothing
+		}
+		$attr = array(
+			'src' => wp_get_attachment_url($id)
+		);
+		
+		echo image_shortcode_footer($attr);
+		};
+}
 
+// Add Image Shortcode
+function image_shortcode_footer($atts) {
+    $atts = shortcode_atts(
+        [
+        'src' => '',
+        ], $atts, 'img'
+    );
+
+    $return = '<div class="footer_images_column"><img src="' . $atts['src'] . ' "style="width:100%"/></div>';
+    
+    return $return;
+}
+
+add_shortcode('img', 'image_shortcode_footer');
 add_action('customize_register', 'add_post_meta_checkbox');
 add_action('customize_register', 'add_my_media_controls');
 add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );
 add_action('customize_register', 'add_images_to_slider');
+add_action('customize_register', 'add_images_to_footer');
+
