@@ -549,6 +549,9 @@ table {
     width: 100%;
   }
   .sticky-padding-fix {
+    padding-top: 100px;
+  }
+  .music-sticky-padding-fix {
     padding-top: 50px;
   }
   .sticky-nav-icon {
@@ -566,6 +569,9 @@ table {
     width: 100%;
   }
   .sticky-padding-fix {
+    padding-top: 100px;
+  }
+  .music-sticky-padding-fix {
     padding-top: 50px;
   }
   .sticky-nav-icon {
