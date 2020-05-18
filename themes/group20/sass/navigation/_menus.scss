@@ -7,6 +7,7 @@ $line-spacing: 50px;
 .sub-menu {
 	width: inherit;
 }
+
 .main-navigation {
 	justify-content: center;
 	font-size: 1.5em;	
@@ -94,6 +95,7 @@ $line-spacing: 50px;
 		.sub-menu {
 			display: none;
 		}
+		
 	}
 	.mobileMenu {
 		display: flex;
@@ -140,15 +142,18 @@ $line-spacing: 50px;
 @include medium-screen {
 	.main-navigation {
 		display: flex;
+		z-index: 100000;
 	}
 	.toggle-nav {
 		display: none;
 	}
+	
 };
 
 @include large-screen {
 	.main-navigation {
 		display: flex;
+		z-index: 100000;
 	}
 	.toggle-nav {
 		display: none;
@@ -158,6 +163,7 @@ $line-spacing: 50px;
 @include largest-screen {
 	.main-navigation {
 		display: flex;
+		z-index: 100000;
 	}
 	.toggle-nav {
 		display: none;

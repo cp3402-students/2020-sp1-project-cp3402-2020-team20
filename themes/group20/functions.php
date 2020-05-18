@@ -143,6 +143,9 @@ add_action( 'widgets_init', 'group20_widgets_init' );
  * Enqueue scripts and styles.
  */
 function group20_scripts() {
+
+    wp_enqueue_style( 'group20-fonts', 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Poiret+One&display=swap
+');
 	wp_enqueue_style( 'group20-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'group20-style', 'rtl', 'replace' );
 	wp_enqueue_script( 'group20-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -192,7 +195,7 @@ function group20_custom_scripts() {
 	wp_enqueue_script( 'hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array( 'jquery' ) );
 }
 
-// Custom image slider 
+// image slider customizer code
 function add_images_to_slider($wp_customize) {
 	$wp_customize->add_section('slider_images', array(
 		'title' => 'Image Slider',
@@ -243,26 +246,25 @@ function add_images_to_slider($wp_customize) {
 	)));
 }
 
-add_action('customize_register', 'add_images_to_slider');
-
-// test looper
 function echo_theme_slider_images() {
 	$images = ['images', 'images2', 'images3'];
 
 	for ($i = 0; $i < 3; $i++) {
-		$id = get_theme_mod($images[$i]);
-		if ($id != 0) {
-			// Display nothing
-		}
-		$attr = array(
-			'src' => wp_get_attachment_url($id)
-		);
-		
-		echo image_shortcode($attr);
-		};
+
+		if (get_theme_mod($images[$i]) != 0) {
+			$id = get_theme_mod($images[$i]);
+			if ($id != 0) {
+				// Display nothing
+			}
+			$attr = array(
+				'src' => wp_get_attachment_url($id)
+			);
+			echo image_shortcode($attr);
+		} 	
+	};
 }
 
-// Add Image Shortcode
+// image shortcode
 function image_shortcode($atts) {
     $atts = shortcode_atts(
         [
@@ -274,12 +276,9 @@ function image_shortcode($atts) {
     
     return $return;
 }
-
 add_shortcode('img', 'image_shortcode');
 
-
-
-// // new section from https://www.sitepoint.com/using-the-wordpress-customizer-media-controls/ tutorial
+// add music player customizer option
 
 function add_my_media_controls($wp_customize) {
 	$wp_customize->add_section('sound', array(
@@ -313,13 +312,29 @@ function echo_theme_sound() {
 		'src' => wp_get_attachment_url($id)
 	);
 	
-	echo '<div style="margin-top: 30px;">' . wp_audio_shortcode($attr) . '</div>';
+	echo '<div>' . wp_audio_shortcode($attr) . '</div>';
 }
 
+// customizer option - turn on/off display of bylines of posts
 
-add_action('customize_register', 'add_my_media_controls');
+function add_post_meta_checkbox($wp_customize) {
+	$wp_customize->add_section('byline', array(
+		'title' => 'Post Meta Information',
+		'description' => 'Choose whether or not to display meta information about posts.',
+		'capability' => 'edit_theme_options'
+	));
 
-add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );
+	$wp_customize->add_setting('meta_info', array(
+		'default' => true,
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'meta_info', array(
+		'section' => 'byline',
+		'label' => 'Post meta info',
+		'description' => 'This allows the user to choose if they want the meta information displayed with a post.',
+		'type' => 'checkbox'
+	)));
 
 function register_my_menu() {
   register_nav_menu('footer-menu',__( 'Footer menu' ));
@@ -378,11 +393,22 @@ function add_images_to_footer($wp_customize) {
 	)));
 }
 
-add_action('customize_register', 'add_images_to_footer');
+
 
 // test looper
 function echo_theme_footer_images() {
 	$footer_images = ['footer_images', 'footer_images2', 'footer_images3'];
+=======
+}
+
+function echo_post_meta() {
+	$display_meta = get_theme_mod('meta_info', true);
+
+	if ($display_meta == true) {
+		group20_posted_on();
+		group20_posted_by();
+	}
+}
 
 	for ($x = 0; $x < 3; $x++) {
 		$id = get_theme_mod($footer_images[$x]);
@@ -411,3 +437,9 @@ function image_shortcode_footer($atts) {
 }
 
 add_shortcode('img', 'image_shortcode_footer');
+add_action('customize_register', 'add_post_meta_checkbox');
+add_action('customize_register', 'add_my_media_controls');
+add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );
+add_action('customize_register', 'add_images_to_slider');
+add_action('customize_register', 'add_images_to_footer');
+
