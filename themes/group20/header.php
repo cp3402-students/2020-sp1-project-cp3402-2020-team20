@@ -52,6 +52,7 @@
 
 <!-- OBVIOUSLY COME BACK AND CHANGE THIS -->
 	<?php echo_theme_slider_images() ?>
+	
 
 	
 </div>

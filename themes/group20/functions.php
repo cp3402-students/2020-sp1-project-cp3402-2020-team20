@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Group20 functions and definitions
  *
@@ -7,12 +8,12 @@
  * @package Group20
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define('_S_VERSION', '1.0.0');
 }
 
-if ( ! function_exists( 'group20_setup' ) ) :
+if (!function_exists('group20_setup')) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -20,17 +21,18 @@ if ( ! function_exists( 'group20_setup' ) ) :
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function group20_setup() {
+	function group20_setup()
+	{
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
 		 * If you're building a theme based on Group20, use a find and replace
 		 * to change 'group20' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'group20', get_template_directory() . '/languages' );
+		load_theme_textdomain('group20', get_template_directory() . '/languages');
 
 		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		add_theme_support('automatic-feed-links');
 
 		/*
 		 * Let WordPress manage the document title.
@@ -38,19 +40,19 @@ if ( ! function_exists( 'group20_setup' ) ) :
 		 * hard-coded <title> tag in the document head, and expect WordPress to
 		 * provide it for us.
 		 */
-		add_theme_support( 'title-tag' );
+		add_theme_support('title-tag');
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
-		add_theme_support( 'post-thumbnails' );
+		add_theme_support('post-thumbnails');
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'group20' ),
+				'menu-1' => esc_html__('Primary', 'group20'),
 			)
 		);
 
@@ -84,7 +86,7 @@ if ( ! function_exists( 'group20_setup' ) ) :
 		);
 
 		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+		add_theme_support('customize-selective-refresh-widgets');
 
 		/**
 		 * Add support for core custom logo.
@@ -102,7 +104,7 @@ if ( ! function_exists( 'group20_setup' ) ) :
 		);
 	}
 endif;
-add_action( 'after_setup_theme', 'group20_setup' );
+add_action('after_setup_theme', 'group20_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -111,25 +113,27 @@ add_action( 'after_setup_theme', 'group20_setup' );
  *
  * @global int $content_width
  */
-function group20_content_width() {
+function group20_content_width()
+{
 	// This variable is intended to be overruled from themes.
 	// Open WPCS issue: {@link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/issues/1043}.
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
-	$GLOBALS['content_width'] = apply_filters( 'group20_content_width', 640 );
+	$GLOBALS['content_width'] = apply_filters('group20_content_width', 640);
 }
-add_action( 'after_setup_theme', 'group20_content_width', 0 );
+add_action('after_setup_theme', 'group20_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function group20_widgets_init() {
+function group20_widgets_init()
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'group20' ),
+			'name'          => esc_html__('Sidebar', 'group20'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'group20' ),
+			'description'   => esc_html__('Add widgets here.', 'group20'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -137,24 +141,25 @@ function group20_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'group20_widgets_init' );
+add_action('widgets_init', 'group20_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function group20_scripts() {
+function group20_scripts()
+{
 
-    wp_enqueue_style( 'group20-fonts', 'https://use.typekit.net/laz8fep.css');
-	wp_enqueue_style( 'group20-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'group20-style', 'rtl', 'replace' );
-	wp_enqueue_script( 'group20-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script( 'group20-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true );
+	wp_enqueue_style('group20-fonts', 'https://use.typekit.net/laz8fep.css');
+	wp_enqueue_style('group20-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_style_add_data('group20-style', 'rtl', 'replace');
+	wp_enqueue_script('group20-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+	wp_enqueue_script('group20-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'group20_scripts' );
+add_action('wp_enqueue_scripts', 'group20_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -179,7 +184,7 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
+if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
@@ -190,12 +195,14 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 // 
 //
 
-function group20_custom_scripts() {     
-	wp_enqueue_script( 'hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array( 'jquery' ) );
+function group20_custom_scripts()
+{
+	wp_enqueue_script('hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array('jquery'));
 }
 
 // image slider customizer code
-function add_images_to_slider($wp_customize) {
+function add_images_to_slider($wp_customize)
+{
 	$wp_customize->add_section('slider_images', array(
 		'title' => 'Image Slider',
 		'description' => 'Add some images to the image slider.',
@@ -245,7 +252,8 @@ function add_images_to_slider($wp_customize) {
 	)));
 }
 
-function echo_theme_slider_images() {
+function echo_theme_slider_images()
+{
 	$images = ['images', 'images2', 'images3'];
 
 	for ($i = 0; $i < 3; $i++) {
@@ -259,27 +267,31 @@ function echo_theme_slider_images() {
 				'src' => wp_get_attachment_url($id)
 			);
 			echo image_shortcode($attr);
-		} 	
+		}
 	};
 }
 
 // image shortcode
-function image_shortcode($atts) {
-    $atts = shortcode_atts(
-        [
-        'src' => '',
-        ], $atts, 'img'
-    );
+function image_shortcode($atts)
+{
+	$atts = shortcode_atts(
+		[
+			'src' => '',
+		],
+		$atts,
+		'img'
+	);
 
-    $return = '<div class="mySlides fade"><img src="' . $atts['src'] . '"/></div>';
-    
-    return $return;
+	$return = '<div class="mySlides fade"><img src="' . $atts['src'] . '"/></div>';
+
+	return $return;
 }
 add_shortcode('img', 'image_shortcode');
 
 // add music player customizer option
 
-function add_my_media_controls($wp_customize) {
+function add_my_media_controls($wp_customize)
+{
 	$wp_customize->add_section('sound', array(
 		'title' => 'Music',
 		'description' => 'Add some music to play in the background of your website.',
@@ -298,11 +310,11 @@ function add_my_media_controls($wp_customize) {
 		'mime_type' => 'audio',
 		'description' => 'This will add music to the music player.'
 	)));
-
 }
 
 // this is the function to actually put the media player on the page
-function echo_theme_sound() {
+function echo_theme_sound()
+{
 	$id = get_theme_mod('music');
 	if ($id != 0) {
 		// Display the tag
@@ -310,13 +322,14 @@ function echo_theme_sound() {
 	$attr = array(
 		'src' => wp_get_attachment_url($id)
 	);
-	
+
 	echo '<div id="music_player" class="music-player"' . wp_audio_shortcode($attr) . '</div>';
 }
 
 // customizer option - turn on/off display of bylines of posts
 
-function add_post_meta_checkbox($wp_customize) {
+function add_post_meta_checkbox($wp_customize)
+{
 	$wp_customize->add_section('byline', array(
 		'title' => 'Post Meta Information',
 		'description' => 'Choose whether or not to display meta information about posts.',
@@ -334,79 +347,82 @@ function add_post_meta_checkbox($wp_customize) {
 		'description' => 'This allows the user to choose if they want the meta information displayed with a post.',
 		'type' => 'checkbox'
 	)));
-
-function register_my_menu() {
-  register_nav_menu('footer-menu',__( 'Footer menu' ));
-}
-add_action( 'init', 'register_my_menu' );
-
-
-// Custom image slider Footer
-function add_images_to_footer($wp_customize) {
-	$wp_customize->add_section('slider_images_footer', array(
-		'title' => 'Image Footer',
-		'description' => 'Add some images to the image slider.',
-		'capability' => 'edit_theme_options'
-	));
-
-	// Image 1
-	$wp_customize->add_setting('footer_images', array(
-		'type' => 'theme_mod',
-		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'absint'
-	));
-
-	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images', array(
-		'section' => 'slider_images_footer',
-		'label' => 'Images',
-		'mime_type' => 'image',
-		'description' => 'This will add images to the image slider.'
-	)));
-
-	// Image 2
-	$wp_customize->add_setting('footer_images2', array(
-		'type' => 'theme_mod',
-		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'absint'
-	));
-
-	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images2', array(
-		'section' => 'slider_images_footer',
-		'label' => 'Images2',
-		'mime_type' => 'image',
-		'description' => 'This will add images to the image slider.'
-	)));
-
-	// Image 3
-	$wp_customize->add_setting('footer_images3', array(
-		'type' => 'theme_mod',
-		'capability' => 'edit_theme_options',
-		'sanitize_callback' => 'absint'
-	));
-
-	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images3', array(
-		'section' => 'slider_images_footer',
-		'label' => 'Images3',
-		'mime_type' => 'image',
-		'description' => 'This will add images to the image slider.'
-	)));
 }
 
+	function register_my_menu()
+	{
+		register_nav_menu('footer-menu', __('Footer menu'));
+	}
+	add_action('init', 'register_my_menu');
+
+
+	// Custom image slider Footer
+	function add_images_to_footer($wp_customize)
+	{
+		$wp_customize->add_section('slider_images_footer', array(
+			'title' => 'Image Footer',
+			'description' => 'Add some images to the image slider.',
+			'capability' => 'edit_theme_options'
+		));
+
+		// Image 1
+		$wp_customize->add_setting('footer_images', array(
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'absint'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images', array(
+			'section' => 'slider_images_footer',
+			'label' => 'Images',
+			'mime_type' => 'image',
+			'description' => 'This will add images to the image slider.'
+		)));
+
+		// Image 2
+		$wp_customize->add_setting('footer_images2', array(
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'absint'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images2', array(
+			'section' => 'slider_images_footer',
+			'label' => 'Images2',
+			'mime_type' => 'image',
+			'description' => 'This will add images to the image slider.'
+		)));
+
+		// Image 3
+		$wp_customize->add_setting('footer_images3', array(
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'absint'
+		));
+
+		$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images3', array(
+			'section' => 'slider_images_footer',
+			'label' => 'Images3',
+			'mime_type' => 'image',
+			'description' => 'This will add images to the image slider.'
+		)));
+	}
+
+	function echo_post_meta()
+	{
+		$display_meta = get_theme_mod('meta_info', true);
+
+		if ($display_meta == true) {
+			group20_posted_on();
+			group20_posted_by();
+		}
+	}
 
 
 // test looper
-function echo_theme_footer_images() {
+function echo_theme_footer_images()
+{
 	$footer_images = ['footer_images', 'footer_images2', 'footer_images3'];
-}
-
-function echo_post_meta() {
-	$display_meta = get_theme_mod('meta_info', true);
-
-	if ($display_meta == true) {
-		group20_posted_on();
-		group20_posted_by();
-	}
-}
 
 	for ($x = 0; $x < 3; $x++) {
 		$id = get_theme_mod($footer_images[$x]);
@@ -416,28 +432,31 @@ function echo_post_meta() {
 		$attr = array(
 			'src' => wp_get_attachment_url($id)
 		);
-		
+
 		echo image_shortcode_footer($attr);
-		};
+	};
 }
-
 // Add Image Shortcode
-function image_shortcode_footer($atts) {
-    $atts = shortcode_atts(
-        [
-        'src' => '',
-        ], $atts, 'img'
-    );
+function image_shortcode_footer($atts)
+{
+	$atts = shortcode_atts(
+		[
+			'src' => '',
+		],
+		$atts,
+		'img'
+	);
 
-    $return = '<div class="footer_images_column"><img src="' . $atts['src'] . ' "style="width:100%"/></div>';
-    
-    return $return;
+	$return = '<div class="footer_images_column"><img src="' . $atts['src'] . ' "style="width:100%"/></div>';
+
+	return $return;
 }
 
 add_shortcode('img', 'image_shortcode_footer');
+
+
 add_action('customize_register', 'add_post_meta_checkbox');
 add_action('customize_register', 'add_my_media_controls');
-add_action( 'wp_enqueue_scripts', 'group20_custom_scripts' );
+add_action('wp_enqueue_scripts', 'group20_custom_scripts');
 add_action('customize_register', 'add_images_to_slider');
 add_action('customize_register', 'add_images_to_footer');
-
