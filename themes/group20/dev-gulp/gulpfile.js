@@ -1,6 +1,7 @@
 
 
 // insert the location of your local server in the variable below
+
 var server_location = 'http://localhost/wordpress/';
 
 var gulp = require( 'gulp' ),
