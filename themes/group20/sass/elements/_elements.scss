@@ -15,6 +15,10 @@ body {
 	// background: red;
 }
 
+header {
+	background: $color__background-body; // Fallback for when there is no custom background color defined.
+}
+
 hr {
 	background-color: $color__background-hr;
 	border: 0;
@@ -204,6 +208,9 @@ figure {
 		z-index: 10000;
 		right: 0;
 	}
+	.mobile-sticky-fix {
+		padding-top: 40px;
+	}
 };
 
 @include small-screen {	
@@ -220,6 +227,9 @@ figure {
 		position: fixed;
 		width: 100%;
 		z-index: 10000;
+	}
+	.mobile-sticky-fix {
+		padding-top: 40px;
 	}
 };
 

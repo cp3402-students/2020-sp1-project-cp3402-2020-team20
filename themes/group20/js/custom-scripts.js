@@ -42,9 +42,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var primary_area = document.getElementById("primary");
   // mobile
   var mobile_nav_icon = document.getElementById("nav-icon1");
+  var masthead = document.getElementById("masthead");
+
+  var sticky = 150;
 
   // Get the offset position of the navbar - now hardcoded in case user starts in mobile 
-  var sticky = 150;
+  var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      if (mobile_check < mobile_stitch_point) { 
+        sticky = 1;
+      } 
+  
   
 
 
@@ -59,17 +66,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       if (mobile_check < mobile_stitch_point) { 
-        
-
+        sticky = 1;
         if(this.oldScroll > this.scrollY) {
           // scrolling up
           if (mobile_nav_icon.classList == "mobileMenu open") {
             remove_mobile_sticky_tags();
           } else {
             add_mobile_sticky_tags();      
-            if (mobile_nav_icon.classList == "mobileMenu") {
-              setTimeout(timer_remove_mobile_sticky_tags, 2000);      
-            }
           }
         } else {
           // scrolling down
@@ -79,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         this.oldScroll = this.scrollY;
 
       } else {
+        sticky = 150;
         add_sticky_tags()
       }
 
@@ -89,20 +93,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
         remove_sticky_tags()
       }
     }
-    }
-
-    function timer_remove_mobile_sticky_tags() {
-      if (mobile_nav_icon.classList == "mobileMenu") {
-        remove_mobile_sticky_tags();
-      }
-    }
+  }
 
     function add_mobile_sticky_tags() {
-        mobile_nav_icon.classList.add("mobileMenu");
-      
+      masthead.classList.add("mobileMenu");      
+      music_player.classList.add("mobileMenu");
+      primary_area.classList.add("mobile-sticky-fix");
     }
 
     function remove_mobile_sticky_tags() {      
+      masthead.classList.remove("mobileMenu");  
+      music_player.classList.remove("mobileMenu");
+      primary_area.classList.remove("mobile-sticky-fix");
       mobile_nav_icon.classList.remove("open");
       mobile_nav_icon.classList.remove("mobileMenu");
       navbar.classList.remove("mobileMenu");

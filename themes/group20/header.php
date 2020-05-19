@@ -74,9 +74,9 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
-		
+		<?php echo_theme_sound() ?>
 	</div><!-- #main-nav-part -->
-	<?php echo_theme_sound() ?>
+	
 	
 
 	</header><!-- #masthead -->
