@@ -60,18 +60,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
       var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
       if (mobile_check < mobile_stitch_point) { 
         
+
         if(this.oldScroll > this.scrollY) {
-          add_mobile_sticky_tags();
-        } else if (this.oldScroll < this.scrollY) {
+          // scrolling up
+          if (mobile_nav_icon.classList == "mobileMenu open") {
+            remove_mobile_sticky_tags();
+          } else {
+            add_mobile_sticky_tags();      
+            if (mobile_nav_icon.classList == "mobileMenu") {
+              setTimeout(timer_remove_mobile_sticky_tags, 2000);      
+            }
+          }
+        } else {
+          // scrolling down
           remove_mobile_sticky_tags();
         }
-        this.oldScroll = this.scrollY;
+
         this.oldScroll = this.scrollY;
 
       } else {
         add_sticky_tags()
       }
-
 
     } else {
       if (mobile_check < mobile_stitch_point) { 
@@ -82,13 +91,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
     }
 
-    function add_mobile_sticky_tags() {
-      mobile_nav_icon.classList.add("mobileMenu");
+    function timer_remove_mobile_sticky_tags() {
+      if (mobile_nav_icon.classList == "mobileMenu") {
+        remove_mobile_sticky_tags();
+      }
     }
 
-    function remove_mobile_sticky_tags() {
-      mobile_nav_icon.classList.remove("mobileMenu");
+    function add_mobile_sticky_tags() {
+        mobile_nav_icon.classList.add("mobileMenu");
+      
+    }
+
+    function remove_mobile_sticky_tags() {      
       mobile_nav_icon.classList.remove("open");
+      mobile_nav_icon.classList.remove("mobileMenu");
       navbar.classList.remove("mobileMenu");
     }
 
