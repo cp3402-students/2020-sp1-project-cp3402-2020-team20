@@ -423,16 +423,6 @@ function add_post_meta_checkbox($wp_customize)
 function echo_theme_footer_images()
 {
 	$footer_images = ['footer_images', 'footer_images2', 'footer_images3'];
-}
-
-function echo_post_meta() {
-	$display_meta = get_theme_mod('meta_info', true);
-
-	if ($display_meta == true) {
-		group20_posted_on();
-		group20_posted_by();
-	}
-}
 
 
 	for ($x = 0; $x < 3; $x++) {
@@ -447,6 +437,7 @@ function echo_post_meta() {
 		echo image_shortcode_footer($attr);
 	};
 }
+
 // Add Image Shortcode
 function image_shortcode_footer($atts)
 {
