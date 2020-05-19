@@ -46,6 +46,10 @@ figure {
 .site-branding {
 	width: 25%;
 }
+
+.top-header {
+	height: 150px;
+}
   
 
   // nav button
@@ -198,6 +202,7 @@ figure {
 		position: fixed;
 		width: 100%;
 		z-index: 10000;
+		right: 0;
 	}
 };
 

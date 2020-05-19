@@ -43,58 +43,68 @@ document.addEventListener("DOMContentLoaded", function(event) {
   // mobile
   var mobile_nav_icon = document.getElementById("nav-icon1");
 
-  // When the user scrolls the page, execute myFunction
-  window.onscroll = function() {
-    // detect whether we are in mobile mode
-    var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    if (mobile_check < mobile_stitch_point) {  
-      mobile_sticky_function();
-    } else {
-      sticky_function()
-    }
-    sticky_function()
-    
-  };
-
-  window.onresize = function() {
-    // check to see if we have resized to a mobile-menu displaying window size
-    var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-      // if (mobile_check < mobile_stitch_point) {  
-      //   mobile_sticky_function();
-      // } else {
-      //   sticky_function()
-      // }
-      sticky_function()
-  };  
-
-  function mobile_sticky_function() {  
-      if (window.pageYOffset >= sticky) {
-        music_player.classList.add("sticky");
-        music_player.classList.add("music-sticky-padding-fix");
-        primary_area.classList.add("sticky-padding-fix");
-        mobile_nav_icon.classList.add("sticky");
-      } else {
-        music_player.classList.remove("sticky");
-        music_player.classList.remove("music-sticky-padding-fix");
-        primary_area.classList.remove("sticky-padding-fix");
-        mobile_nav_icon.classList.remove("sticky"); 
-      }
-    }
+  // Get the offset position of the navbar - now hardcoded in case user starts in mobile 
+  var sticky = 150;
   
+
+
+  window.onresize, window.onscroll = function() {
+    sticky_function()
+  };  
 
   // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
   function sticky_function() { 
-    console.log('why do i exist');
+
     if (window.pageYOffset >= sticky) {
-      navbar.classList.add("sticky");
-      music_player.classList.add("sticky");
-      music_player.classList.add("music-sticky-padding-fix");
-      primary_area.classList.add("sticky-padding-fix");
+
+      var mobile_check = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      if (mobile_check < mobile_stitch_point) { 
+        
+        if(this.oldScroll > this.scrollY) {
+          add_mobile_sticky_tags();
+        } else if (this.oldScroll < this.scrollY) {
+          remove_mobile_sticky_tags();
+        }
+        this.oldScroll = this.scrollY;
+        this.oldScroll = this.scrollY;
+
+      } else {
+        add_sticky_tags()
+      }
+
+
     } else {
+      if (mobile_check < mobile_stitch_point) { 
+        
+      } else {
+        remove_sticky_tags()
+      }
+    }
+    }
+
+    function add_mobile_sticky_tags() {
+      mobile_nav_icon.classList.add("mobileMenu");
+    }
+
+    function remove_mobile_sticky_tags() {
+      mobile_nav_icon.classList.remove("mobileMenu");
+      mobile_nav_icon.classList.remove("open");
+      navbar.classList.remove("mobileMenu");
+    }
+
+    function remove_sticky_tags() {
       navbar.classList.remove("sticky");
       music_player.classList.remove("sticky");
       music_player.classList.remove("music-sticky-padding-fix");
       primary_area.classList.remove("sticky-padding-fix");
     }
+
+    function add_sticky_tags() {
+      navbar.classList.add("sticky");
+      music_player.classList.add("sticky");
+      music_player.classList.add("music-sticky-padding-fix");
+      primary_area.classList.add("sticky-padding-fix");
     }
+
+    
 });
