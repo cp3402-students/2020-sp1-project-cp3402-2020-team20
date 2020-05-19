@@ -21,3 +21,39 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+// basic page layout
+.hentry{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: auto;
+		padding: 1 1 1 1;
+		width: 70%;
+		align-items: center;
+		
+		h1, h2, h3, header{
+			text-align: center;
+		}
+		div, header {
+			background-color: white;
+		}
+		.entry-content {
+			padding-left: 10%;
+			padding-right: 10%;
+			p{
+				text-align: center;
+				justify-content: center;
+				vertical-align: middle;
+				padding-left: 10%;
+				padding-right: 10%;
+			}
+	}
+	.entry-header{
+		width: 100%;
+		flex: 1 0 100%;
+	}
+	.post-content{
+		width: 60%;
+	}
+}
