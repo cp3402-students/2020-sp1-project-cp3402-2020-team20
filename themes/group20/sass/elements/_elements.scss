@@ -15,6 +15,10 @@ body {
 	// background: red;
 }
 
+header {
+	background: $color__background-body; // Fallback for when there is no custom background color defined.
+}
+
 hr {
 	background-color: $color__background-hr;
 	border: 0;
@@ -35,94 +39,7 @@ figure {
 
 @import "tables";
 
-	
-@include extra-small-screen {	
-	.image-slider {
-		display: none;
-	}
-	#nav-icon1 {
-		position: fixed;
-	}
-};
-
-@include small-screen {	
-	.image-slider {
-		display: none;
-	}
-	#nav-icon1 {
-		position: fixed;
-	}
-};
-
-@include medium-screen {
-	#nav-icon1 {
-		display: none;
-	}
-	.sticky {
-		position: fixed;
-		top: 0;
-		width: 100%;
-	  }
-	
-	  .sticky-padding-fix {
-		  padding-top: 50px;
-	  }
-	
-	  .sticky-nav-icon {
-		  position: fixed;
-	  }
-};
-
-@include large-screen {
-	#nav-icon1 {
-		display: none;
-	}
-	.sticky {
-		position: fixed;
-		top: 0;
-		width: 100%;
-	  }
-	
-	  .sticky-padding-fix {
-		  padding-top: 100px;
-	  }
-
-	  .music-sticky-padding-fix {
-		padding-top: 50px;
-	}
-	
-	  .sticky-nav-icon {
-		  position: fixed;
-	  }
-};
-
-@include largest-screen {
-	#nav-icon1 {
-		display: none;
-	}
-	.sticky {
-		position: fixed;
-		top: 0;
-		width: 100%;
-		
-	  }
-	
-	  .sticky-padding-fix {
-		  padding-top: 100px;
-	  }
-	  .music-sticky-padding-fix {
-		padding-top: 50px;
-	}
-	
-	  .sticky-nav-icon {
-		  position: fixed;
-	  }
-};
-
-
-
-
-// TO FIX IN A WHILE
+	// TO FIX IN A WHILE
 
 
 .site-header {
@@ -133,6 +50,10 @@ figure {
 .site-branding {
 	width: 25%;
 }
+
+.top-header {
+	height: 150px;
+}
   
 
   // nav button
@@ -140,7 +61,6 @@ figure {
   #nav-icon1 {
 	width: 60px;
 	height: $nav-button-height;
-	position: relative;
 	margin: 10px;
 	-webkit-transform: rotate(0deg);
 	-moz-transform: rotate(0deg);
@@ -270,3 +190,114 @@ figure {
 }
   
 @import "footer";
+
+
+@include extra-small-screen {	
+	.image-slider {
+		display: none;
+	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		right: 0px;
+	  }
+	.mobileMenu {
+		position: fixed;
+		width: 100%;
+		z-index: 10000;
+		right: 0;
+	}
+	.mobile-sticky-fix {
+		padding-top: 40px;
+	}
+};
+
+@include small-screen {	
+	.image-slider {
+		display: none;
+	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		right: 0px;
+	  }
+	  .mobileMenu {
+		position: fixed;
+		width: 100%;
+		z-index: 10000;
+	}
+	.mobile-sticky-fix {
+		padding-top: 40px;
+	}
+};
+
+@include medium-screen {
+	#nav-icon1 {
+		display: none;
+	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	  }
+	
+	  .sticky-padding-fix {
+		  padding-top: 100px;
+	  }
+
+	  .music-sticky-padding-fix {
+		padding-top: 50px;
+	}
+	
+	  .sticky-nav-icon {
+		  position: fixed;
+	  }
+};
+
+@include large-screen {
+	#nav-icon1 {
+		display: none;
+	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+	  }
+	
+	  .sticky-padding-fix {
+		  padding-top: 100px;
+	  }
+
+	  .music-sticky-padding-fix {
+		padding-top: 50px;
+	}
+	
+	  .sticky-nav-icon {
+		  position: fixed;
+	  }
+};
+
+@include largest-screen {
+	#nav-icon1 {
+		display: none;
+	}
+	.sticky {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		
+	  }
+	
+	  .sticky-padding-fix {
+		  padding-top: 100px;
+	  }
+	  .music-sticky-padding-fix {
+		padding-top: 50px;
+	}
+	
+	  .sticky-nav-icon {
+		  position: fixed;
+	  }
+};

@@ -11,6 +11,7 @@ $line-spacing: 50px;
 .main-navigation {
 	justify-content: center;
 	font-size: 1.5em;	
+	z-index: 10001;
 
 	// Main menu bar
 	ul {
@@ -102,11 +103,11 @@ $line-spacing: 50px;
 
 		ul {
 			flex-direction: column;
-			z-index: 99999;
+			z-index: 10001;
 		}		
 	}
 	.site-header {
-		height: 50px;
+		height: 65px;
 		justify-content: space-between;
 	}
 	.top-header {
@@ -127,11 +128,11 @@ $line-spacing: 50px;
 		
 		ul {
 			flex-direction: column;
-			z-index: 99999;
+			z-index: 10001;
 		}
 	}	
 	.site-header {
-		height: 50px;
+		height: 65px;
 		justify-content: space-between;
 	}
 	.top-header {
@@ -142,7 +143,7 @@ $line-spacing: 50px;
 @include medium-screen {
 	.main-navigation {
 		display: flex;
-		z-index: 100000;
+		z-index: 10001;
 	}
 	.toggle-nav {
 		display: none;
@@ -153,7 +154,7 @@ $line-spacing: 50px;
 @include large-screen {
 	.main-navigation {
 		display: flex;
-		z-index: 100000;
+		z-index: 10001;
 	}
 	.toggle-nav {
 		display: none;
@@ -163,7 +164,7 @@ $line-spacing: 50px;
 @include largest-screen {
 	.main-navigation {
 		display: flex;
-		z-index: 100000;
+		z-index: 10001;
 	}
 	.toggle-nav {
 		display: none;

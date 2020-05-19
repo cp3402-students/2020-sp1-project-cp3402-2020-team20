@@ -52,6 +52,7 @@
 
 <!-- OBVIOUSLY COME BACK AND CHANGE THIS -->
 	<?php echo_theme_slider_images() ?>
+	
 
 	
 </div>
@@ -73,9 +74,9 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
-		
+		<?php echo_theme_sound() ?>
 	</div><!-- #main-nav-part -->
-	<?php echo_theme_sound() ?>
+	
 	
 
 	</header><!-- #masthead -->
