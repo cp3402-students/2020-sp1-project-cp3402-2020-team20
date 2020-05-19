@@ -16,6 +16,7 @@
 
 			<?php wp_nav_menu( array( 'theme_location' => 'new-menu' ) ); ?>
 			
+			
 			<div class="footer_images_row">
 				<?php echo_theme_footer_images() ?>
 			</div>
