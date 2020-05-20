@@ -11,14 +11,18 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
+	<footer id="colophon" class="site-footer" style="
+			color: <?php echo get_option('color_Secondary_Font'); ?>;
+			background-color: <?php echo get_option('color_Secondary'); ?>;">
 
-			<?php wp_nav_menu( array( 'theme_location' => 'new-menu' ) ); ?>
-			
+		<div class="site-info">
+		
+			<div>
+				<?php echo_theme_footer_blurb(); ?>
+			</div>
 			
 			<div class="footer_images_row">
-				<?php echo_theme_footer_images() ?>
+				<?php echo_theme_footer_images(); ?>
 			</div>
 			
 			<span class="sep"> </span>

@@ -15,7 +15,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main" style="
+			color: <?php echo get_option('color_Main_Font'); ?>;
+			background-color: <?php echo get_option('color_MainBackground'); ?>;">
 
 		<?php
 		while ( have_posts() ) :

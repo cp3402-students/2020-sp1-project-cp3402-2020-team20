@@ -456,9 +456,130 @@ function image_shortcode_footer($atts)
 
 add_shortcode('img', 'image_shortcode_footer');
 
-
 add_action('customize_register', 'add_post_meta_checkbox');
 add_action('customize_register', 'add_my_media_controls');
 add_action('wp_enqueue_scripts', 'group20_custom_scripts');
 add_action('customize_register', 'add_images_to_slider');
 add_action('customize_register', 'add_images_to_footer');
+
+
+function footer_blurb( $wp_customize ) {
+	// Create custom panel.
+	$wp_customize->add_panel( 'text_blocks', array(
+		'priority'       => 500,
+		'theme_supports' => '',
+		'title'          => __( 'Footer Text Blurb', 'footer_blurb_txt' ),
+		'description'    => __( 'Set text blurb for footer.', 'footer_blurb_txt' ),
+	) );
+	// Add Footer Text
+	// Add section.
+	$wp_customize->add_section( 'custom_footer_text' , array(
+		'title'    => __('Change Footer Text','footer_blurb_txt'),
+		'panel'    => 'text_blocks',
+		'priority' => 10
+	) );
+	// Add setting
+	$wp_customize->add_setting( 'footer_text_block', array(
+		 'default'           => __( 'default text', 'footer_blurb_txt' ),
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	// Add control
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'custom_footer_text',
+		    array(
+		        'label'    => __( 'Footer Text', 'footer_blurb_txt' ),
+		        'section'  => 'custom_footer_text',
+		        'settings' => 'footer_text_block',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+
+ 	// Sanitize text
+	function sanitize_text( $text ) {
+	    return sanitize_text_field( $text );
+	}
+}
+add_action( 'customize_register', 'footer_blurb' );
+
+function echo_theme_footer_blurb()
+{
+	echo '<div>' . get_theme_mod( 'footer_text_block') . '</div>';
+}
+
+function color_customizer($wp_customize){
+  $wp_customize->add_section( 'theme_colors_settings', array(
+      'title' => __( 'Theme Colors Settings', 'Group20Theme' ),
+      'priority' => 5,
+    ) );
+
+    $theme_colors = array();
+
+    $theme_colors[] = array(
+      'slug'=>'color_PrimaryTitle',
+      'default' => '#F7A525',
+      'label' => __('Primary Title', 'Group20Theme')
+    );
+	
+	$theme_colors[] = array(
+      'slug'=>'color_PrimaryTitle_Highlight',
+      'default' => '#f7e2c0',
+      'label' => __('Primary Title Highlight', 'Group20Theme')
+    );
+	
+	$theme_colors[] = array(
+	  'slug'=>'color_PrimaryTitle_Font', 
+	  'default' => '#FFF8DD',
+	  'label' => __('PrimaryTitle Font', 'Group20Theme')
+	);
+	
+	$theme_colors[] = array(
+	  'slug'=>'color_MainBackground', 
+	  'default' => '#151617',
+	  'label' => __('Main Background', 'Group20Theme')
+	);
+	
+	$theme_colors[] = array(
+	  'slug'=>'color_Main_Font', 
+	  'default' => '#3a290c',
+	  'label' => __('Main Font', 'Group20Theme')
+	);
+	
+	$theme_colors[] = array(
+	  'slug'=>'color_Secondary', 
+	  'default' => '#fff0e5',
+	  'label' => __('Secondary', 'Group20Theme')
+	);
+	
+	$theme_colors[] = array(
+	  'slug'=>'color_Secondary_Font', 
+	  'default' => '#515151',
+	  'label' => __('Secondary Font', 'Group20Theme')
+	);
+
+    foreach( $theme_colors as $color ) {
+
+      $wp_customize->add_setting(
+        $color['slug'], array(
+          'default' => $color['default'],
+          'sanitize_callback' => 'sanitize_hex_color',
+          'type' => 'option',
+          'capability' => 'edit_theme_options'
+        )
+      );
+
+      $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+          $wp_customize,
+          $color['slug'],
+          array('label' => $color['label'],
+          'section' => 'theme_colors_settings',
+          'settings' => $color['slug'])
+        )
+      );
+    }
+  }
+add_action( 'customize_register', 'color_customizer' );
+
