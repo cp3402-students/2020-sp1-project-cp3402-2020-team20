@@ -22,7 +22,8 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+<div id="page" class="site" >
+			
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'group20' ); ?></a>
 
 	<div class="top-header">
@@ -54,6 +55,7 @@
 	<?php echo_theme_slider_images() ?>
 	
 
+
 	
 </div>
 		<div id="nav-icon1">
@@ -64,7 +66,10 @@
 	</div> <!-- #top-header -->
 
 	<div class="main-nav-part">		
-		<nav id="site-navigation" class="main-navigation">
+		<nav id="site-navigation" class="main-navigation" style="
+			color: <?php echo get_option('color_PrimaryTitle_Font'); ?>;
+			background-color: <?php echo get_option('color_PrimaryTitle'); ?>;">
+			
 			<?php
 			wp_nav_menu(
 				array(
