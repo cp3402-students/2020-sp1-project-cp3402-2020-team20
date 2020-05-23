@@ -2,6 +2,7 @@
 .site-footer {
     margin: 0 0 1.5em;
     width: 100%;
+    text-align: center;
 }
 
 @include extra-small-screen {	
@@ -18,7 +19,7 @@
     }
     
     .footer_images_column{
-        flex: 33.33%;
+        flex: 50%;
         padding: 5px;
     }
 };
@@ -29,7 +30,7 @@
     }
     
     .footer_images_column{
-        flex: 33.33%;
+        flex: 50%;
         padding: 5px;
     }
 };
@@ -40,7 +41,7 @@
     }
     
     .footer_images_column{
-        flex: 33.33%;
+        flex: 50%;
         padding: 5px;
     }
 };

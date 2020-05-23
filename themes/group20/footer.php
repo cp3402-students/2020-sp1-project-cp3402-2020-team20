@@ -16,11 +16,15 @@
 			background-color: <?php echo get_option('color_Secondary'); ?>;">
 
 		<div class="site-info">
-		
+
 			<div>
-				<?php echo_theme_footer_blurb(); ?>
+				<?php echo get_theme_mod( 'footer_text_block')?>
 			</div>
-			
+			<div>
+				<?php $socialimage = wp_get_attachment_image_src(get_theme_mod( 'footer_social_image'));?>
+				<a href="<?php echo get_theme_mod( 'footer_social_link')?>"><img src="<?php echo $socialimage[0];?>" style="width:64px; height:64px;"></a><br>
+			</div>
+
 			<div class="footer_images_row">
 				<?php echo_theme_footer_images(); ?>
 			</div>
