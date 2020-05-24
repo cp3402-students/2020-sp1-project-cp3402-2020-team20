@@ -93,3 +93,72 @@ padding-right: 1%;
 .wp-block-file{
 text-align: center;
 }
+
+// screen sizes to cater for
+// $extra-small: 576px;
+// $small: 768px;
+// $medium: 992px;
+// $large: 1200px;
+
+@include extra-small-screen {
+	.site-header {
+		height: 65px;
+		justify-content: space-between;
+	}
+	.top-header {
+		height: $nav-button-height + (2 * $nav-button-margin);
+	}
+};
+
+@include small-screen {
+	.site-header {
+		height: 65px;
+		justify-content: space-between;
+	}
+	.top-header {
+		height: $nav-button-height + (2 * $nav-button-margin);
+	}
+};
+
+@include medium-screen {
+	.main-navigation {
+		display: flex;
+		z-index: 10001;
+	}
+	.toggle-nav {
+		display: none;
+	}
+	.top-header {
+		width: 80%;
+		margin: auto;
+	}
+	
+};
+
+@include large-screen {
+	.main-navigation {
+		display: flex;
+		z-index: 10001;
+	}
+	.toggle-nav {
+		display: none;
+	}
+	.top-header {
+		width: 80%;
+		margin: auto;
+	}
+};
+
+@include largest-screen {
+	.main-navigation {
+		display: flex;
+		z-index: 10001;
+	}
+	.toggle-nav {
+		display: none;
+	}
+	.top-header {
+		width: 80%;
+		margin: auto;
+	}
+};

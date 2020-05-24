@@ -10,7 +10,6 @@ $line-spacing: 50px;
 
 .main-navigation {
 	justify-content: center;
-	font-size: 1.5em;	
 	z-index: 10001;
 
 	// Main menu bar
@@ -18,34 +17,90 @@ $line-spacing: 50px;
 		display: flex;
 		list-style: none;
 		margin: 0;
-		padding: 0;
+		padding: 0px;
 		height: $line-spacing;
 		line-height: $line-spacing;
+	
+		@include extra-small-screen {
+			li:hover > ul,
+				li.focus > ul {
+					display: none;
+				}
+			
+		};
+
+		@include small-screen {
+			li:hover > ul,
+				li.focus > ul {
+					display: none;
+				}
+			
+		};
+
+		@include medium-screen {
+			font-size: 1em;
+			li:hover > ul,
+				li.focus > ul {
+					display: inline-block;
+				}
+			
+		};
+
+		@include large-screen {
+			font-size: 1.25em;
+			li:hover > ul,
+				li.focus > ul {
+					display: inline-block;
+				}
+		};
+
+		@include largest-screen {
+			font-size: 1.5em;
+			li:hover > ul,
+				li.focus > ul {
+					display: inline-block;
+				}
+		};
 
 		// Sub-menu items
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
 			position: inherit;
-			left: -999em;
 			z-index: 99999;
-			display: inline-block;
+			display: none;
 
-			li {
-				&:hover > ul,
-				&.focus > ul {
-					display: block;
-					left: auto;		
-							
-				}	
-				background-color: blue;		
-				width: 250%;		
-			}
-		}
+			@include medium-screen {
+				li {	
+					width: 175%;		
+					a {
+						font-size: 1em;
+					}
+					
+				}
+	
+			};
+			
+			@include large-screen {
+				li {	
+					width: 225%;	
+					a {
+						font-size: .75em;
+					}
+				}
+			};
+			
+			@include largest-screen {
+				li {	
+					width: 250%;	
+					max-width: 450px;
+					a {
+						font-size: .5em;
+					}
+				}
+			};
 
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
 		}
+		
 	}
 
 	li {
@@ -71,7 +126,7 @@ $line-spacing: 50px;
 	}
 
 	a {
-		display: block;
+		display: inline-block;
 		text-decoration: none;
 	}
 
@@ -106,13 +161,6 @@ $line-spacing: 50px;
 			z-index: 10001;
 		}		
 	}
-	.site-header {
-		height: 65px;
-		justify-content: space-between;
-	}
-	.top-header {
-		height: $nav-button-height + (2 * $nav-button-margin);
-	}
 };
 
 @include small-screen {
@@ -131,13 +179,6 @@ $line-spacing: 50px;
 			z-index: 10001;
 		}
 	}	
-	.site-header {
-		height: 65px;
-		justify-content: space-between;
-	}
-	.top-header {
-		height: $nav-button-height + (2 * $nav-button-margin);
-	}
 };
 
 @include medium-screen {
@@ -169,5 +210,28 @@ $line-spacing: 50px;
 	.toggle-nav {
 		display: none;
 	}
+};
+
+@include extra-small-screen {
+	
+	
+};
+
+@include small-screen {
+	
+	
+};
+
+@include medium-screen {
+	
+	
+};
+
+@include large-screen {
+	
+};
+
+@include largest-screen {
+	
 };
 
