@@ -198,6 +198,7 @@ if (defined('JETPACK__VERSION')) {
 function group20_custom_scripts()
 {
 	wp_enqueue_script('hamburger-menu-script', get_stylesheet_directory_uri() . '/js/custom-scripts.js', array('jquery'));
+
 }
 
 // image slider customizer code
@@ -510,76 +511,97 @@ function echo_theme_footer_blurb()
 }
 
 function color_customizer($wp_customize){
-  $wp_customize->add_section( 'theme_colors_settings', array(
-      'title' => __( 'Theme Colors Settings', 'Group20Theme' ),
-      'priority' => 5,
-    ) );
 
-    $theme_colors = array();
+  $wp_customize->add_section( 'theme_color_settings', array(
+      	'title' => 'Theme Color Settings',
+      	'description' => 'things to do with colours.',
+		'capability' => 'edit_theme_options'
+	) );
+	
 
-    $theme_colors[] = array(
-      'slug'=>'color_PrimaryTitle',
-      'default' => '#F7A525',
-      'label' => __('Primary Title', 'Group20Theme')
-    );
-	
-	$theme_colors[] = array(
-      'slug'=>'color_PrimaryTitle_Highlight',
-      'default' => '#f7e2c0',
-      'label' => __('Primary Title Highlight', 'Group20Theme')
-    );
-	
-	$theme_colors[] = array(
-	  'slug'=>'color_PrimaryTitle_Font', 
-	  'default' => '#FFF8DD',
-	  'label' => __('PrimaryTitle Font', 'Group20Theme')
-	);
-	
-	$theme_colors[] = array(
-	  'slug'=>'color_MainBackground', 
-	  'default' => '#151617',
-	  'label' => __('Main Background', 'Group20Theme')
-	);
-	
-	$theme_colors[] = array(
-	  'slug'=>'color_Main_Font', 
-	  'default' => '#3a290c',
-	  'label' => __('Main Font', 'Group20Theme')
-	);
-	
-	$theme_colors[] = array(
-	  'slug'=>'color_Secondary', 
-	  'default' => '#fff0e5',
-	  'label' => __('Secondary', 'Group20Theme')
-	);
-	
-	$theme_colors[] = array(
-	  'slug'=>'color_Secondary_Font', 
-	  'default' => '#515151',
-	  'label' => __('Secondary Font', 'Group20Theme')
-	);
+	// main background color
+	$wp_customize->add_setting('main_background_color', array(
+		'default' => '#151617',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+	));
+	  
+	  $wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'main_background_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Custom page background color.',
+		'description' => 'This allows the user to have a custom background colour.',			
+	  ))
+	  );
 
-    foreach( $theme_colors as $color ) {
+	  $wp_customize->add_setting('show_main_background_color', array(
+		'default' => true,
+		'capability' => 'edit_theme_options'
+	));
 
-      $wp_customize->add_setting(
-        $color['slug'], array(
-          'default' => $color['default'],
-          'sanitize_callback' => 'sanitize_hex_color',
-          'type' => 'option',
-          'capability' => 'edit_theme_options'
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'show_main_background_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Show main background color.',
+		'type' => 'checkbox'        	
+		
+		)
         )
-      );
+	  );
 
-      $wp_customize->add_control(
-        new WP_Customize_Color_Control(
-          $wp_customize,
-          $color['slug'],
-          array('label' => $color['label'],
-          'section' => 'theme_colors_settings',
-          'settings' => $color['slug'])
+	  // post background color
+	  $wp_customize->add_setting('post_background_color', array(
+		'default' => '#151617',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+	));
+	  
+	  $wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'post_background_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Custom Post background color.',
+		'description' => 'This allows the user to have a custom post background colour.',			
+	  ))
+	  );
+
+	  $wp_customize->add_setting('show_post_background_color', array(
+		'default' => true,
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'show_post_background_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Show post background color.',
+		'type' => 'checkbox'        	
+		  )
         )
-      );
-    }
-  }
+	  );
+}
+
+function get_custom_background_color()
+	{
+		$display_color = get_theme_mod('show_main_background_color', false);
+		if ($display_color) {
+			echo get_option('main_background_color', '#ffffff');
+		}
+	}
+
+	function get_post_background_color()
+	{
+		$display_color = get_theme_mod('show_post_background_color', false);
+		if ($display_color) {
+			echo get_option('post_background_color', '#ffffff');
+		}
+	}
+  
+
 add_action( 'customize_register', 'color_customizer' );
 
+
+
+function remove_default_customizer_options( $wp_customize ) {
+ $wp_customize->remove_section("colors");
+}
+
+add_action( "customize_register", "remove_default_customizer_options" );
