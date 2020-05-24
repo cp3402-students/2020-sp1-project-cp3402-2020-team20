@@ -14,9 +14,7 @@
 	<footer id="colophon" class="site-footer" style="
 			color: <?php echo get_option('color_Secondary_Font'); ?>;
 			background-color: <?php echo get_option('color_Secondary'); ?>;">
-
-		<div class="site-info">
-
+			
 			<div>
 				<?php echo get_theme_mod( 'footer_text_block')?>
 			</div>
@@ -28,6 +26,9 @@
 			<div class="footer_images_row">
 				<?php echo_theme_footer_images(); ?>
 			</div>
+
+
+		<div class="site-info">
 			
 			<span class="sep"> </span>
 				<?php
