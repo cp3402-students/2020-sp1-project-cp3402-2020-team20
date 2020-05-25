@@ -20,7 +20,8 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> style="
+			background-color: <?php get_custom_background_color(); ?>;">
 <?php wp_body_open(); ?>
 <div id="page" class="site"
 		style="background-color: <?php get_custom_background_color() ?>;">
@@ -76,7 +77,14 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
-		<?php echo_theme_sound() ?>
+		<div id="music-padding">
+		<?php 
+		
+		echo_theme_sound() 
+		
+		?>
+
+		</div>
 	</div>
 
 	

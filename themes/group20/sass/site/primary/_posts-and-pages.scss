@@ -14,7 +14,7 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 0;
 }
 
 .page-links {
@@ -52,6 +52,8 @@ h1, h2, h3, h4, header{
 
 .entry-content {
 		background-color: $color__MainBackground;
+		padding-top: 50px;
+    	padding-bottom: 50px;
 	p{
 		color: $color__MainFont;
 		text-align: justify;

@@ -12,8 +12,7 @@
 ?>
 
 	<footer id="colophon" class="site-footer" style="
-			color: <?php echo get_option('color_Secondary_Font'); ?>;
-			background-color: <?php echo get_option('color_Secondary'); ?>;">
+			background-color: <?php get_custom_background_color(); ?>;">>
 
 		<div class="site-info">
 		

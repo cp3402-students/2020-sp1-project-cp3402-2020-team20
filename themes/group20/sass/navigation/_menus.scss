@@ -4,13 +4,10 @@ $line-spacing: 50px;
 	width: 100%;
 }
 
-.sub-menu {
-	width: inherit;
-}
-
 .main-navigation {
 	justify-content: center;
 	z-index: 10001;
+	background-color: $color__PrimaryTitle;
 
 	// Main menu bar
 	ul {
@@ -43,6 +40,9 @@ $line-spacing: 50px;
 				li.focus > ul {
 					display: inline-block;
 				}
+				ul {
+					width: 250%;
+				}
 			
 		};
 
@@ -52,6 +52,9 @@ $line-spacing: 50px;
 				li.focus > ul {
 					display: inline-block;
 				}
+				ul {
+					width: 250%;
+				}
 		};
 
 		@include largest-screen {
@@ -59,6 +62,10 @@ $line-spacing: 50px;
 			li:hover > ul,
 				li.focus > ul {
 					display: inline-block;
+				}
+				ul {
+					width: 250%;
+					max-width: 450px;
 				}
 		};
 
@@ -69,33 +76,34 @@ $line-spacing: 50px;
 			z-index: 99999;
 			display: none;
 
+			height: auto;
+			background-color: $color__PrimaryTitle;
+
+			
+			li {
+				height: auto;
+				padding-bottom: 1px;
+				padding-right: 0;
+			}
+
 			@include medium-screen {
-				li {	
-					width: 175%;		
-					a {
-						font-size: 1em;
-					}
-					
+				li {		
+					line-height: 50px;
+					height: 50px;					
 				}
 	
 			};
 			
 			@include large-screen {
-				li {	
-					width: 225%;	
-					a {
-						font-size: .75em;
-					}
+				li {		
+					font-size: .75em;
 				}
 			};
 			
 			@include largest-screen {
-				li {	
-					width: 250%;	
+				li {		
 					max-width: 450px;
-					a {
-						font-size: .5em;
-					}
+					font-size: .5em;
 				}
 			};
 
@@ -110,7 +118,8 @@ $line-spacing: 50px;
 		width: 100%;
 		height: 100%;
 		text-align: center;		
-	
+		padding-right: 2px;
+		background-color: $color__PrimaryTitle;
 
 		a {
 			margin: auto;
@@ -121,8 +130,12 @@ $line-spacing: 50px;
 
 		&:hover > a,
 		&.focus > a {			
-			background-color: mediumaquamarine;
+			background-color: darken($color__MainBackground, 35%);
 		}
+	}
+
+	li:last-child {
+		padding-right: 0px;
 	}
 
 	a {
@@ -134,9 +147,11 @@ $line-spacing: 50px;
 	.current-menu-item > a,
 	.current_page_ancestor > a,
 	.current-menu-ancestor > a {
-		background-color: midnightblue;
+		background-color: darken($color__MainBackground, 15%);
 	}
 }
+
+
 
 // screen sizes to cater for
 // $extra-small: 576px;
