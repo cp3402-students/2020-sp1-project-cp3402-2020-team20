@@ -22,10 +22,14 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'group20' ); ?></a>
+<div id="page" class="site"
+		style="background-color: <?php get_custom_background_color() ?>;">
+			
+		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'group20' ); ?></a>
 
-	<header id="masthead" class="site-header">
+	<div class="top-header">
+		<header id="masthead" class="site-header">
+		
 		<div class="site-branding">
 			<?php
 			the_custom_logo();
@@ -45,8 +49,24 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'group20' ); ?></button>
+		<!-- Slideshow container -->
+<div class="slideshow-container">
+
+<!-- OBVIOUSLY COME BACK AND CHANGE THIS -->
+	<?php echo_theme_slider_images() ?>
+	
+</div>
+		<div id="nav-icon1">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div> <!-- #top-header -->
+
+	<div class="main-nav-part">		
+		<nav id="site-navigation" class="main-navigation" style="
+			background-color: <?php echo get_custom_background_color(); ?>;">
+			
 			<?php
 			wp_nav_menu(
 				array(
@@ -56,6 +76,11 @@
 			);
 			?>
 		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		<?php echo_theme_sound() ?>
+	</div>
 
-	<div id="content" class="site-content">
+	
+	
+
+	</header><!-- #masthead -->
+</div><!-- #main-nav-part -->

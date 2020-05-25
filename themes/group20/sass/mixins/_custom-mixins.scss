@@ -1,0 +1,35 @@
+// screen sizes to cater for
+$extra-small: 576px;
+$small: 768px;
+$medium: 992px;
+$large: 1200px;
+
+@mixin extra-small-screen {
+    @media(max-width: $extra-small - 1) {
+        @content;
+    }
+}
+
+@mixin small-screen {
+    @media(min-width: $extra-small) and (max-width: $small - 1) {
+        @content;
+    }
+}
+
+@mixin medium-screen {
+    @media(min-width: $small) and (max-width: $medium - 1) {
+        @content; 
+    }
+}
+
+@mixin large-screen {
+    @media(min-width: $medium) and (max-width: $large - 1) {
+        @content;
+    }
+}
+
+@mixin largest-screen {
+    @media(min-width: $large) {
+        @content;
+    }
+}

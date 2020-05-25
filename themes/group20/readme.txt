@@ -14,7 +14,7 @@ A starter theme called Group20.
 
 == Description ==
 
-Description
+Group20 Theme
 
 == Installation ==
 

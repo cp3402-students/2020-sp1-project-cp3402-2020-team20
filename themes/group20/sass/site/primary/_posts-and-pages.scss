@@ -1,0 +1,164 @@
+.sticky {
+	display: block;
+}
+
+.post,
+.page {
+	margin: 0 0 1.5em;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5em 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+// basic page layout
+.site{
+	background: url(http://127.0.0.1/wordpress/wp-content/uploads/2020/05/saxBackground-1.jpg);
+	background-position-x: center;
+	background-position-y: center;
+	background-size: initial;
+	background-clip: initial;
+	float: none;
+}
+.hentry{
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: auto;
+	padding: 1 1 1 1;
+	width: 80%;
+	align-items: center;
+
+}
+header {
+	background-color: $color__background-body;
+}
+
+h1, h2, h3, h4, header{
+	text-align: center;
+	color: $color__PrimaryTitle;
+	background-color: $color__MainBackground;
+}
+
+.entry-content {
+		background-color: $color__MainBackground;
+	p{
+		color: $color__MainFont;
+		text-align: justify;
+		justify-content: center;
+		vertical-align: middle;
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	.has-text-align-center{
+		text-align: center;
+	}
+.entry-header{
+	width: 100%;
+	flex: 1 0 100%;
+}
+.post-content{
+	width: 70%;
+}
+.wp-block-latest-posts__post-excerpt{
+	color: $color__MainFont;
+}
+figcaption{
+	color: $color__MainFont;
+}
+}
+.wp-image-370{
+margin-left: 6em;
+}
+.gmap_canvas{
+margin-left: auto;
+margin-right: auto;
+}
+.post-thumbnail{
+display: none;
+}
+.alignright.size-large{
+padding-right: 1%;
+}
+.wp-block-file{
+text-align: center;
+}
+
+// screen sizes to cater for
+// $extra-small: 576px;
+// $small: 768px;
+// $medium: 992px;
+// $large: 1200px;
+
+@include extra-small-screen {
+	.site-header {
+		height: 65px;
+		justify-content: space-between;
+	}
+	.top-header {
+		height: $nav-button-height + (2 * $nav-button-margin);
+	}
+};
+
+@include small-screen {
+	.site-header {
+		height: 65px;
+		justify-content: space-between;
+	}
+	.top-header {
+		height: $nav-button-height + (2 * $nav-button-margin);
+	}
+};
+
+@include medium-screen {
+	.main-navigation {
+		display: flex;
+		z-index: 10001;
+	}
+	.toggle-nav {
+		display: none;
+	}
+	.top-header {
+		width: 80%;
+		margin: auto;
+	}
+	
+};
+
+@include large-screen {
+	.main-navigation {
+		display: flex;
+		z-index: 10001;
+	}
+	.toggle-nav {
+		display: none;
+	}
+	.top-header {
+		width: 80%;
+		margin: auto;
+	}
+};
+
+@include largest-screen {
+	.main-navigation {
+		display: flex;
+		z-index: 10001;
+	}
+	.toggle-nav {
+		display: none;
+	}
+	.top-header {
+		width: 80%;
+		margin: auto;
+	}
+};

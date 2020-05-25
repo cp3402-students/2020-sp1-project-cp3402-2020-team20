@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8753027b-4951-4c3c-b03e-3b5b7106a5bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1bxwM3r1LsJMjqRN39CmctqWW9I" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8753027b-4951-4c3c-b03e-3b5b7106a5bf" name="Default Changelist" comment="" />
+      <created>1589587000608</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589587000608</updated>
+      <workItem from="1589587004858" duration="5328000" />
+      <workItem from="1589598530587" duration="1914000" />
+      <workItem from="1589601357042" duration="5658000" />
+      <workItem from="1589771670813" duration="13000" />
+      <workItem from="1589771716013" duration="741000" />
+      <workItem from="1589772755481" duration="573000" />
+      <workItem from="1589773970714" duration="4538000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.php" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1379" height="271" key="GridCell.Tab.0.bottom" timestamp="1589587238318">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1379" height="271" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1589587238318" />
+    <state width="1379" height="271" key="GridCell.Tab.0.center" timestamp="1589587238316">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1379" height="271" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1589587238316" />
+    <state width="1379" height="271" key="GridCell.Tab.0.left" timestamp="1589587238314">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1379" height="271" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1589587238314" />
+    <state width="1379" height="271" key="GridCell.Tab.0.right" timestamp="1589587238317">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state width="1379" height="271" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1589587238317" />
+    <state x="397" y="253" width="704" height="252" key="MultipleFileMergeDialog" timestamp="1589772814931">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="397" y="253" width="704" height="252" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1589772814931" />
+  </component>
+</project>

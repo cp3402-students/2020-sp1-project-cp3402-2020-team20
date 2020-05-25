@@ -15,8 +15,8 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<main id="primary" class="site-main" 
+		style="background-color: <?php get_custom_background_color() ?>;">
 
 		<?php
 		while ( have_posts() ) :
@@ -32,8 +32,7 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_sidebar();

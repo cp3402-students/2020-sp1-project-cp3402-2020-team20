@@ -15,8 +15,9 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	<main id="primary" class="site-main" style="
+			color: <?php echo get_option('color_Main_Font'); ?>;
+			background-color: <?php echo get_option('color_MainBackground'); ?>;">
 
 		<?php
 		if ( have_posts() ) :
@@ -51,8 +52,7 @@ get_header();
 		endif;
 		?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_sidebar();
