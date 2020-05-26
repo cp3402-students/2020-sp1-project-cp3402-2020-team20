@@ -324,7 +324,7 @@ function echo_theme_sound()
 		'src' => wp_get_attachment_url($id)
 	);
 
-	echo '<div id="music_player" class="music-player" style="width: 100%"' . wp_audio_shortcode($attr) . '</div>';
+	echo '<div id="music_player" class="music-player"' . wp_audio_shortcode($attr) . '</div>';
 }
 
 // customizer option - turn on/off display of bylines of posts

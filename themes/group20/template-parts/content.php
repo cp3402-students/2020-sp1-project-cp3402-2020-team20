@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<header class="entry-header" style="background-color: <?php get_post_background_color() ?>;">
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -30,7 +30,7 @@
 
 	<?php group20_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content" style="background-color: <?php get_post_background_color() ?>;">
 		<?php
 		the_content(
 			sprintf(
