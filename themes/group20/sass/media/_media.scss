@@ -1,50 +1,99 @@
 .page-content .wp-smiley,
 .entry-content .wp-smiley,
 .comment-content .wp-smiley {
-	border: none;
-	margin-bottom: 0;
-	margin-top: 0;
-	padding: 0;
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
 }
 
 /* Make sure embeds and iframes fit their containers. */
 embed,
 iframe,
 object {
-	max-width: 100%;
+  max-width: 100%;
 }
 
 /* Make sure logo link wraps around logo image. */
 .custom-logo-link {
-	display: inline-block;
+  display: inline-block;
 }
 
-@include extra-small-screen {	
-	.custom-logo-link {
-		display: block;
-		
-		
-	}
-	.custom-logo {
-		height: $nav-button-height + (2 * $nav-button-margin);
-		width: $nav-button-height + (2 * $nav-button-margin);
-	}
-};
+#music-padding {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+@include extra-small-screen {
+  .custom-logo-link {
+    display: block;
+  }
+  .custom-logo {
+    height: $nav-button-height + (2 * $nav-button-margin);
+    width: $nav-button-height + (2 * $nav-button-margin);
+  }
+  #music_player {
+    width: 100%;
+    margin: auto;
+  }
+  #music-padding {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
+}
+
+;
 
 @include small-screen {
-	.custom-logo-link {
-		display: block;
-	}
-	.custom-logo {
-		height: $nav-button-height + (2 * $nav-button-margin);
-		width: $nav-button-height + (2 * $nav-button-margin);
-	}
-};
-
-#music_player {
-	width: 80%;
-	margin: auto;
+  .custom-logo-link {
+    display: block;
+  }
+  .custom-logo {
+    height: $nav-button-height + (2 * $nav-button-margin);
+    width: $nav-button-height + (2 * $nav-button-margin);
+  }
+  #music_player {
+    width: 100%;
+    margin: auto;
+  }
+  #music-padding {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
 }
+
+;
+
+@include medium-screen {
+  #music_player {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+;
+
+@include large-screen {
+  #music_player {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+;
+
+@include largest-screen {
+  #music_player {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+;
+
 
 /*--------------------------------------------------------------
 ## Captions
