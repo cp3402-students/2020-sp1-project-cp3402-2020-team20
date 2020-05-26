@@ -357,57 +357,6 @@ function add_post_meta_checkbox($wp_customize)
 	add_action('init', 'register_my_menu');
 
 
-	// Custom image slider Footer
-	function add_images_to_footer($wp_customize)
-	{
-		$wp_customize->add_section('slider_images_footer', array(
-			'title' => 'Image Footer',
-			'description' => 'Add some images to the image slider.',
-			'capability' => 'edit_theme_options'
-		));
-
-		// Image 1
-		$wp_customize->add_setting('footer_images', array(
-			'type' => 'theme_mod',
-			'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'absint'
-		));
-
-		$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images', array(
-			'section' => 'slider_images_footer',
-			'label' => 'Images',
-			'mime_type' => 'image',
-			'description' => 'This will add images to the image slider.'
-		)));
-
-		// Image 2
-		$wp_customize->add_setting('footer_images2', array(
-			'type' => 'theme_mod',
-			'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'absint'
-		));
-
-		$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images2', array(
-			'section' => 'slider_images_footer',
-			'label' => 'Images2',
-			'mime_type' => 'image',
-			'description' => 'This will add images to the image slider.'
-		)));
-
-		// Image 3
-		$wp_customize->add_setting('footer_images3', array(
-			'type' => 'theme_mod',
-			'capability' => 'edit_theme_options',
-			'sanitize_callback' => 'absint'
-		));
-
-		$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_images3', array(
-			'section' => 'slider_images_footer',
-			'label' => 'Images3',
-			'mime_type' => 'image',
-			'description' => 'This will add images to the image slider.'
-		)));
-	}
 
 	function echo_post_meta()
 	{
@@ -419,15 +368,117 @@ function add_post_meta_checkbox($wp_customize)
 		}
 	}
 
+add_action('customize_register', 'add_post_meta_checkbox');
+add_action('customize_register', 'add_my_media_controls');
+add_action('wp_enqueue_scripts', 'group20_custom_scripts');
+add_action('customize_register', 'add_images_to_slider');
 
-// test looper
+function footer_( $wp_customize ) {
+	// Create custom panel.
+	$wp_customize->add_panel( 'text_blocks', array(
+		'priority'       => 500,
+		'theme_supports' => '',
+		'title'          => __( 'Footer Stuff', 'footer_stuff' ),
+		'description'    => __( 'Set footer properties.', 'footer_stuff' ),
+	) );
+
+	//Footer Basics Section 
+	$wp_customize->add_section( 'custom_footer_text' , array(
+		'title'    => __('Change Footer Text','footer_stuff'),
+		'panel'    => 'text_blocks',
+		'priority' => 10
+	) );
+	// Add setting
+	$wp_customize->add_setting( 'footer_text_block', array(
+		 'default'           => __( 'default text', 'footer_stuff' )
+	) );
+	// Add control
+	$wp_customize->add_control( new WP_Customize_Control($wp_customize,'custom_footer_text',
+		    array(
+		        'label'    => __( 'Footer Text', 'footer_stuff' ),
+		        'section'  => 'custom_footer_text',
+		        'settings' => 'footer_text_block',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+
+	//Footer Social Section
+	$wp_customize->add_section( 'custom_footer_social' , array(
+		'title'    => __('Change Social Link','footer_stuff'),
+		'panel'    => 'text_blocks',
+		'priority' => 10
+	) );
+	// Add setting
+	$wp_customize->add_setting( 'footer_social_link', array(
+		 'default'           => __( 'https://faceboook.etc...', 'footer_stuff' )
+	) );
+	// Add control
+	$wp_customize->add_control( new WP_Customize_Control($wp_customize,'custom_footer_social',
+		    array(
+		        'label'    => __( 'Footer Social Link', 'footer_stuff' ),
+		        'section'  => 'custom_footer_social',
+		        'settings' => 'footer_social_link',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+	// Social Image
+	$wp_customize->add_setting('footer_social_image', array(
+		'type' => 'theme_mod',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_social_image', array(
+		'section' => 'custom_footer_social',
+		'label' => __('Social Image Icon','footer_stuff'),
+		'mime_type' => 'image',
+	)));
+
+	
+	// Footer Images Section
+	$wp_customize->add_section('footer_images', array(
+		'title' => __('Footer Images','footer_stuff'),
+		'description' => 'Add some images to the Footer.',
+		'panel'    => 'text_blocks'
+	));
+	// Image 1
+	$wp_customize->add_setting('footer_image1', array(
+		'type' => 'theme_mod',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_image1', array(
+		'section' => 'footer_images',
+		'label' => __('Image1','footer_stuff'),
+		'mime_type' => 'image',
+	)));
+	// Image 2
+	$wp_customize->add_setting('footer_image2', array(
+		'type' => 'theme_mod',
+		'sanitize_callback' => 'absint'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'footer_image2', array(
+		'section' => 'footer_images',
+		'label' => __('Image2','footer_stuff'),
+		'mime_type' => 'image',
+	)));
+
+}
+add_action( 'customize_register', 'footer_' );
+
+
+// Display Footer Images
 function echo_theme_footer_images()
 {
-	$footer_images = ['footer_images', 'footer_images2', 'footer_images3'];
+	$footer_imagesArray = ['footer_image1', 'footer_image2'];
 
 
-	for ($x = 0; $x < 3; $x++) {
-		$id = get_theme_mod($footer_images[$x]);
+	for ($x = 0; $x < 2; $x++) {
+		$id = get_theme_mod($footer_imagesArray[$x]);
 		if ($id != 0) {
 			// Display nothing
 		}
@@ -454,62 +505,10 @@ function image_shortcode_footer($atts)
 
 	return $return;
 }
-
 add_shortcode('img', 'image_shortcode_footer');
 
-add_action('customize_register', 'add_post_meta_checkbox');
-add_action('customize_register', 'add_my_media_controls');
-add_action('wp_enqueue_scripts', 'group20_custom_scripts');
-add_action('customize_register', 'add_images_to_slider');
-add_action('customize_register', 'add_images_to_footer');
 
-
-function footer_blurb( $wp_customize ) {
-	// Create custom panel.
-	$wp_customize->add_panel( 'text_blocks', array(
-		'priority'       => 500,
-		'theme_supports' => '',
-		'title'          => __( 'Footer Text Blurb', 'footer_blurb_txt' ),
-		'description'    => __( 'Set text blurb for footer.', 'footer_blurb_txt' ),
-	) );
-	// Add Footer Text
-	// Add section.
-	$wp_customize->add_section( 'custom_footer_text' , array(
-		'title'    => __('Change Footer Text','footer_blurb_txt'),
-		'panel'    => 'text_blocks',
-		'priority' => 10
-	) );
-	// Add setting
-	$wp_customize->add_setting( 'footer_text_block', array(
-		 'default'           => __( 'default text', 'footer_blurb_txt' ),
-		 'sanitize_callback' => 'sanitize_text'
-	) );
-	// Add control
-	$wp_customize->add_control( new WP_Customize_Control(
-	    $wp_customize,
-		'custom_footer_text',
-		    array(
-		        'label'    => __( 'Footer Text', 'footer_blurb_txt' ),
-		        'section'  => 'custom_footer_text',
-		        'settings' => 'footer_text_block',
-		        'type'     => 'text'
-		    )
-	    )
-	);
-
-
- 	// Sanitize text
-	function sanitize_text( $text ) {
-	    return sanitize_text_field( $text );
-	}
-}
-add_action( 'customize_register', 'footer_blurb' );
-
-function echo_theme_footer_blurb()
-{
-	echo '<div>' . get_theme_mod( 'footer_text_block') . '</div>';
-}
-
+// Theme Colours
 function color_customizer($wp_customize){
 
   $wp_customize->add_section( 'theme_color_settings', array(
