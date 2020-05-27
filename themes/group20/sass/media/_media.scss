@@ -21,7 +21,8 @@ object {
 
 #music-padding {
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: row;
   margin: auto;
 }
 
@@ -39,7 +40,6 @@ object {
   }
   #music-padding {
     width: 100%;
-    display: block;
     margin: auto;
   }
 }
@@ -60,7 +60,6 @@ object {
   }
   #music-padding {
     width: 100%;
-    display: block;
     margin: auto;
   }
 }
@@ -93,6 +92,10 @@ object {
 }
 
 ;
+
+.mejs-container, .mejs-container .mejs-controls, .mejs-embed, .mejs-embed body {
+  background: transparent !important;
+}
 
 
 /*--------------------------------------------------------------

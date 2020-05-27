@@ -83,7 +83,11 @@
         <div id="music-padding">
             <?php
 
-            echo_theme_sound()
+            echo_theme_sound();
+            if (get_call_to_action_link()) {
+                // here
+                echo '<script type="text/javascript">', 'ctafunction();', '</script>';
+            }
 
             ?>
 

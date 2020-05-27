@@ -94,6 +94,15 @@ $line-spacing: 50px;
       }
     }
 
+    li {
+      padding-right: 0px;
+      padding-bottom: 1px;
+    }
+
+    li:last-child {
+      padding-bottom: 0px;
+    }
+
     .sub-menu {
       display: none;
     }
@@ -121,6 +130,14 @@ $line-spacing: 50px;
       li.focus > ul {
         display: none;
       }
+    }
+
+    li {
+      padding-right: 0px;
+    }
+
+    li:last-child {
+      padding-bottom: 0px;
     }
 
     .sub-menu {

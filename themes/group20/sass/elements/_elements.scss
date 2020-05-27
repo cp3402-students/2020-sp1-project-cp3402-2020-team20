@@ -354,6 +354,18 @@ figure {
 
 ;
 
+.custom-cta {
+  width: 50%;
+  a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    line-height: 40px;
+  }
+}
+
 @import "footer";
 @import "lists";
 @import "tables";
