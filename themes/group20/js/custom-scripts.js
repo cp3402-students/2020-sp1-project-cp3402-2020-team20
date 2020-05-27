@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var navbar = document.getElementById("site-navigation");
   var sticky;
   var mobile_stitch_point = 768;
-  var music_player = document.getElementById('music_player');
+  var music_cta_div = document.getElementById('music-padding');
     // non-mobile
   var primary_area = document.getElementById("primary");
   // mobile
@@ -158,21 +158,21 @@ function change_sticky() {
 
   function add_sticky_tags() {
     navbar.classList.add("sticky");
-    music_player.classList.add("sticky");
-    music_player.classList.add("music-sticky-padding-fix");
+    music_cta_div.classList.add("sticky");
+    music_cta_div.classList.add("music-sticky-padding-fix");
     primary_area.classList.add("sticky-padding-fix");
   }
 
   function add_mobile_sticky_tags() {
     masthead.classList.add("mobileMenu");      
-    music_player.classList.add("mobileMenu");
+    music_cta_div.classList.add("mobileMenu");
     primary_area.classList.add("mobile-sticky-fix");
   }
 
   function remove_mobile_sticky_tags() {  
     masthead.classList.remove("mobileMenu");  
-    music_player.classList.remove("mobileMenu");
-    music_player.classList.remove("mobile-sticky-fix");
+    music_cta_div.classList.remove("mobileMenu");
+    music_cta_div.classList.remove("mobile-sticky-fix");
     primary_area.classList.remove("mobile-sticky-fix");
     mobile_nav_icon.classList.remove("open");
     mobile_nav_icon.classList.remove("mobileMenu");
@@ -181,11 +181,17 @@ function change_sticky() {
 
   function remove_sticky_tags() {
     navbar.classList.remove("sticky");
-    music_player.classList.remove("mobileMenu");
-    music_player.classList.remove("sticky");
-    music_player.classList.remove("music-sticky-padding-fix");
+    music_cta_div.classList.remove("mobileMenu");
+    music_cta_div.classList.remove("sticky");
+    music_cta_div.classList.remove("music-sticky-padding-fix");
     primary_area.classList.remove("sticky-padding-fix");
     primary_area.classList.remove("mobile-sticky-fix");
   }
+
     
 });
+
+function ctafunction() {
+  var music_player = document.getElementById('music_player');
+  music_player.style.width = "50%";
+}
