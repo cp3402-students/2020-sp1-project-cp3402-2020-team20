@@ -16,7 +16,7 @@
 
     <div class="site-info">
 
-        <div>
+        <div class="footer-blurb">
             <?php echo_theme_footer_blurb(); ?>
         </div>
 

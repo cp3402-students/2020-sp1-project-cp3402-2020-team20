@@ -367,6 +367,12 @@ figure {
   }
 }
 
+.footer-blurb {
+  display: block;
+  text-align: center;
+  color: $color__PrimaryTitle
+}
+
 @import "footer";
 @import "lists";
 @import "tables";

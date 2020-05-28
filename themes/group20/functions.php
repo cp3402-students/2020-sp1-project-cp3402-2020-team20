@@ -327,8 +327,7 @@ function echo_theme_sound()
 
 	echo '<div id="music_player" class="music-player" style="background-color: ';
 	echo get_music_player_color();
-	echo '">
-' . wp_audio_shortcode($attr) . '</div>';
+	echo '">' . wp_audio_shortcode($attr) . '</div>';
 }
 
 // customizer option - turn on/off display of bylines of posts
