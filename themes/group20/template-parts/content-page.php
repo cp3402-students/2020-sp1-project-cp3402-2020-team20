@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header test"
+	<header class="entry-header"
           style="background-color: <?php get_post_background_color() ?>;">  
 		<?php the_title( '<h1 class="entry-title", </h1>' ); ?>
 	</header><!-- .entry-header -->

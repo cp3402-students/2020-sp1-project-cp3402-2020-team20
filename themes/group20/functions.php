@@ -321,12 +321,14 @@ function echo_theme_sound()
 		// Display the tag
 	}
 	$attr = array(
-		'src' => wp_get_attachment_url($id)
+		'src' => wp_get_attachment_url($id),
 	);
+
 
 	echo '<div id="music_player" class="music-player" style="background-color: ';
 	echo get_music_player_color();
-	echo '"' . wp_audio_shortcode($attr) . '</div>';
+	echo '">
+' . wp_audio_shortcode($attr) . '</div>';
 }
 
 // customizer option - turn on/off display of bylines of posts
@@ -380,7 +382,7 @@ function footer_( $wp_customize ) {
 	$wp_customize->add_panel( 'text_blocks', array(
 		'priority'       => 500,
 		'theme_supports' => '',
-		'title'          => __( 'Footer Stuff', 'footer_stuff' ),
+		'title'          => __( 'Footer Options', 'footer_stuff' ),
 		'description'    => __( 'Set footer properties.', 'footer_stuff' ),
 	) );
 
@@ -492,6 +494,11 @@ function echo_theme_footer_images()
 	};
 }
 
+function echo_theme_footer_blurb()
+{
+	echo '<div>' . get_theme_mod( 'footer_text_block') . '</div>';
+}
+
 // Add Image Shortcode
 function image_shortcode_footer($atts)
 {
@@ -590,6 +597,20 @@ function color_customizer($wp_customize){
 		'section' => 'theme_color_settings',
 		'label' => 'Music Player background color.',
 		'description' => 'This allows the user to have a custom Music Player colour.',			
+	  )));
+
+	  // footer background colour
+	  $wp_customize->add_setting('footer_background_color', array(
+		'default' => '#151617',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+	));
+	  
+	  $wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'footer_background_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Footer background color.',
+		'description' => 'This allows the user to have a custom footer background colour.',			
 	  )));
 }
 
@@ -724,7 +745,9 @@ function get_cta_background_color()
 		echo get_option('cta_background_color', '#ffffff');
 	}
 
-
+function get_custom_footer_color() {
+	echo get_option('footer_background_color', '#ffffff');
+}
 
 function remove_default_customizer_options( $wp_customize ) {
  $wp_customize->remove_section("colors");
