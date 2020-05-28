@@ -12,7 +12,7 @@
 ?>
 
 <footer id="colophon" class="site-footer" style="
-        background-color: <?php get_custom_background_color(); ?>;">
+        background-color: <?php get_custom_footer_color(); ?>;">
 
     <div class="site-info">
 

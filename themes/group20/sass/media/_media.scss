@@ -24,7 +24,23 @@ object {
   display: flex;
   flex-direction: row;
   margin: auto;
+  height: 50px;
 }
+
+#music_player {
+  height: 50px;
+  display: block;
+  text-align: center;
+}
+
+.wp-audio-shortcode {
+  height: 50px;
+  // width: 50% !important;
+}
+
+// audio::-webkit-media-controls-panel {
+//   background-color: red;
+// }
 
 @include extra-small-screen {
   .custom-logo-link {
@@ -41,6 +57,9 @@ object {
   #music-padding {
     width: 100%;
     margin: auto;
+  }
+  .wp-audio-shortcode {
+    // width: 100% !important;
   }
 }
 
@@ -61,6 +80,9 @@ object {
   #music-padding {
     width: 100%;
     margin: auto;
+  }
+  .wp-audio-shortcode {
+    // width: 100% !important;
   }
 }
 

@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
       prevent_onscroll = false;
     }     
-    this.console.log(sticky);
   };  
 
   window.onresize = function() {
