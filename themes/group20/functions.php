@@ -321,10 +321,14 @@ function echo_theme_sound()
 		// Display the tag
 	}
 	$attr = array(
-		'src' => wp_get_attachment_url($id)
+		'src' => wp_get_attachment_url($id),
 	);
 
-	echo '<div id="music_player" class="music-player"' . wp_audio_shortcode($attr) . '</div>';
+
+	echo '<div id="music_player" class="music-player" style="background-color: ';
+	echo get_music_player_color();
+	echo '">
+' . wp_audio_shortcode($attr) . '</div>';
 }
 
 // customizer option - turn on/off display of bylines of posts
@@ -378,7 +382,7 @@ function footer_( $wp_customize ) {
 	$wp_customize->add_panel( 'text_blocks', array(
 		'priority'       => 500,
 		'theme_supports' => '',
-		'title'          => __( 'Footer Stuff', 'footer_stuff' ),
+		'title'          => __( 'Footer Options', 'footer_stuff' ),
 		'description'    => __( 'Set footer properties.', 'footer_stuff' ),
 	) );
 
@@ -490,6 +494,11 @@ function echo_theme_footer_images()
 	};
 }
 
+function echo_theme_footer_blurb()
+{
+	echo '<div>' . get_theme_mod( 'footer_text_block') . '</div>';
+}
+
 // Add Image Shortcode
 function image_shortcode_footer($atts)
 {
@@ -548,7 +557,6 @@ function color_customizer($wp_customize){
         )
 	  );
 
-	  // post background color
 	  $wp_customize->add_setting('post_background_color', array(
 		'default' => '#151617',
 		'capability' => 'edit_theme_options',
@@ -576,7 +584,40 @@ function color_customizer($wp_customize){
 		  )
         )
 	  );
+
+	  // music player custom color
+	  $wp_customize->add_setting('music_player_color', array(
+		'default' => '#151617',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+	));
+	  
+	  $wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'music_player_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Music Player background color.',
+		'description' => 'This allows the user to have a custom Music Player colour.',			
+	  )));
+
+	  // footer background colour
+	  $wp_customize->add_setting('footer_background_color', array(
+		'default' => '#151617',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+	));
+	  
+	  $wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'footer_background_color', array(
+		'section' => 'theme_color_settings',
+		'label' => 'Footer background color.',
+		'description' => 'This allows the user to have a custom footer background colour.',			
+	  )));
 }
+
+function get_music_player_color()
+	{
+			echo get_option('music_player_color', '#ffffff');
+	}
 
 function get_custom_background_color()
 	{
@@ -597,10 +638,120 @@ function get_custom_background_color()
 
 add_action( 'customize_register', 'color_customizer' );
 
+// call to action customizer code
+function add_call_to_action($wp_customize)
+{
+	$wp_customize->add_section('call_to_action', array(
+		'title' => 'Call To Action',
+		'description' => 'Add a call to action link.',
+		'capability' => 'edit_theme_options'
+	));
 
+	// add checkbox to allow use of custom call to action
+	$wp_customize->add_setting('custom_cta_boolean', array(
+		'default' => true,
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Media_Control($wp_customize, 'custom_cta_boolean', array(
+		'section' => 'call_to_action',
+		'label' => 'Display Custom Call to Action.',
+		'description' => 'Display a custom call to action next to the music player.',
+		'type' => 'checkbox'
+	)));
+
+	// file selector
+	$wp_customize->add_setting('call_to_action_file', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, 'call_to_action_file', array(
+		'section' => 'call_to_action',
+		'label' => 'Call to Action File Link.',
+		'description' => 'This will add a custom call to action file to the header. Use if you want your call to action to link to a file, otherwise leave blank. Takes precidence over Call to Action Link.'
+	)));
+
+	// link selector
+	$wp_customize->add_setting('call_to_action_link', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, 'call_to_action_link', array(
+		'section' => 'call_to_action',
+		'label' => 'Call to Action Link.',
+		'description' => 'This will add a custom call to action link to the header. Use if you want your call to action to link to a site/location, otherwise leave blank.',
+		'type' => 'text'
+	)));
+
+	// link selector
+	$wp_customize->add_setting('call_to_action_text', array(
+		'type' => 'theme_mod',
+		'capability' => 'edit_theme_options'
+	));
+
+	$wp_customize->add_control(new WP_Customize_Upload_Control($wp_customize, 'call_to_action_text', array(
+		'section' => 'call_to_action',
+		'label' => 'Call to action text.',
+		'description' => 'This will add custom text to the call to action link to the header.',
+		'type' => 'text'
+	)));
+
+	// custom cta color
+	$wp_customize->add_setting('cta_background_color', array(
+		'default' => '#151617',
+		'capability' => 'edit_theme_options',
+		'type' => 'option'
+	));
+	  
+	  $wp_customize->add_control(
+		new WP_Customize_Color_Control($wp_customize, 'cta_background_color', array(
+		'section' => 'call_to_action',
+		'label' => 'Call to Action link background color.',
+		'description' => 'This allows the user to have a custom background colour for the custom Call to Action.',			
+	  )));
+}
+
+function get_call_to_action_link() {
+	// check if call to action info has been put in
+	$action_check = get_theme_mod('custom_cta_boolean', false);
+	$cta_file = get_theme_mod('call_to_action_file', '');
+	$cta_link = get_theme_mod('call_to_action_link', '');
+
+	if ($action_check) {
+		
+		$cta_text = get_theme_mod('call_to_action_text', false);
+		echo '<div class="custom-cta" style="background-color: ';
+		echo get_cta_background_color() . '"';
+		
+		echo '><a';
+				
+		if ($cta_file != '') {
+			echo ' href=" ' . $cta_file . '"';
+		} else if ($cta_link != '') {
+			echo ' href=" ' . $cta_link . '"';
+		};
+
+		echo '>' . $cta_text . '</a></div>';
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function get_cta_background_color()
+	{
+		echo get_option('cta_background_color', '#ffffff');
+	}
+
+function get_custom_footer_color() {
+	echo get_option('footer_background_color', '#ffffff');
+}
 
 function remove_default_customizer_options( $wp_customize ) {
  $wp_customize->remove_section("colors");
 }
 
 add_action( "customize_register", "remove_default_customizer_options" );
+add_action( "customize_register", "add_call_to_action" );

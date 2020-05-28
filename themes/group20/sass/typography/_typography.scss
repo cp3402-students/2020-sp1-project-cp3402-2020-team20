@@ -4,14 +4,15 @@ input,
 select,
 optgroup,
 textarea {
-	color: $color__text-main;
-	font-family: $font__body;
-	font-size: 1rem;
-	line-height: $font__line-height-body;
+  color: $color__text-main;
+  font-family: $font__body;
+  font-size: 1rem;
+  line-height: $font__line-height-body;
 }
+
 //makes quotes italic
 .wp-block-quote {
-	font-style: italic;
+  font-style: italic;
 }
 
 @import "headings";
