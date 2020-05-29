@@ -73,8 +73,12 @@ Notes on Structure
 <li>All Customizer functions are in the functions.php file, there are custom scripts at .... etc...</li>
 </ul>
 
-
-
+Plugins Used
+---------------
+<ul>
+<li><a href="https://wordpress.org/plugins/responsive-slider-gallery/" target="_blank">Responsive Slider Gallery</a> - This plugin was used to create responsive galleries. Simply click create new gallery and add the images for that gallery. To display the gallery on a page copy the link provided (looks like "[responsive-slider id=691]") and insert it into a HTML block where the gallery should be displayed</li>
+<li><a href="https://en-au.wordpress.org/plugins/all-in-one-wp-migration/" target="_blank">All-in-One WP Migration</a> - This plugin was used for ease of exporting and importing WordPress databases, it is not necessary.</li>
+</ul>
 
 Documentation should allow a new developer to continue developing (theme details) and deploying
 (publishing workflow) your site. This is non-trivial and should be enough information that someone
