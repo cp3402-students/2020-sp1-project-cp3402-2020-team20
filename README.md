@@ -70,18 +70,14 @@ Commit/Push if needed.
 Notes on Structure
 ---------------
 <ul>
-<li>All Customizer functions are in the functions.php file, there are custom scripts at .... etc...</li>
+<li>All Customizer functions are in the functions.php file, for further documentation see <a href="https://developer.wordpress.org/reference/classes/wp_customize_manager/" target="_blank">WordPress Customize Manager</a></li>
+  
 </ul>
 
-
-
-
-Documentation should allow a new developer to continue developing (theme details) and deploying
-(publishing workflow) your site. This is non-trivial and should be enough information that someone
-could actually follow it successfully. Do not recreate existing documentation such as how to install
-Vagrant, Docker, etc.
-
-Think about someone who already knows WordPress taking over the running of the site: how do
-they add new content; e.g. as a page or a post? You may have used a plugin for a calendar of events
-or something, which needs to be described. Do not recreate WordPress documentation, but clearly
-explain to the client’s site maintainer how this particular site is organised and can be maintained.
+Plugins Used
+---------------
+<ul>
+<li><a href="https://wordpress.org/plugins/responsive-slider-gallery/" target="_blank">Responsive Slider Gallery</a> - This plugin was used to create responsive galleries for photo posts. Each year has it's own post and gallery named accordingly, if adding a new year, a new post and gallery will need to be created. To create a new gallery click create new gallery and add the images for that gallery. To display the gallery on a page copy the link provided (looks like "[responsive-slider id=691]") and insert it into a HTML block where the gallery should be displayed. If editing an existing gallery select it from the plugin and add or remove images as desired and save changes.</li>
+<li><a href="https://en-au.wordpress.org/plugins/all-in-one-wp-migration/" target="_blank">All-in-One WP Migration</a> - This plugin was used for ease of exporting and importing WordPress databases between developers local environments and test/production sites.</li>
+<li><a href="https://help.servmask.com/knowledgebase/install-instructions-for-file-extension/" target="_blank">All-in-One WP Migration File Extension</a> - This plugin was used along side All-in-One WP Migration for larger files, as there is a limit on the size of the files.</li>
+</ul>
