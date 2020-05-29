@@ -357,6 +357,7 @@ figure {
 .custom-cta {
   width: 50%;
   height: 50px;
+  z-index: 10000;
   a {
     display: inline-block;
     height: 100%;
@@ -364,13 +365,28 @@ figure {
     margin: auto;
     text-align: center;
     line-height: 50px;
+    font-size: 1.5em;
+  }
+  &:hover > a,
+  &.focus > a {
+    color: $color__PrimaryTitle;
+    background-color: $color__MainBackground;    
   }
 }
 
 .footer-blurb {
   display: block;
   text-align: center;
-  color: $color__PrimaryTitle
+  color: $color__PrimaryTitle;
+  padding: 50px;
+}
+
+.four-oh-four {
+  padding-top: 100px;
+  padding-bottom: 200px;
+  color: $color__PrimaryTitle_Font;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 @import "footer";
