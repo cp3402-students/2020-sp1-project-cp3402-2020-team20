@@ -70,7 +70,8 @@ Commit/Push if needed.
 Notes on Structure
 ---------------
 <ul>
-<li>All Customizer functions are in the functions.php file, there are custom scripts at .... etc...</li>
+<li>All Customizer functions are in the functions.php file, for further documentation see <a href="https://developer.wordpress.org/reference/classes/wp_customize_manager/" target="_blank">WordPress Customize Manager</a></li>
+  
 </ul>
 
 Plugins Used
