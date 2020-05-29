@@ -10,7 +10,7 @@ Requirements
 --------------
 <ul>
 <li>WordPress Local Environment Install</li>
-<li>Gulp</li>
+<li><a href="https://github.com/cp3402-students/2020-sp1-env-cp3402-2020-team20" target="_blank">Gulp</a></li>
 <li>SASS editor (of your own choosing)</li>
 </ul>
 
